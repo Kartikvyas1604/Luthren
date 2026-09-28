@@ -51,6 +51,31 @@ export const solanaPartyB: PositionBook = {
   ],
 };
 
+export const adversarialBooks: { a: PositionBook; b: PositionBook } = {
+  a: {
+    party: "A",
+    label: "Desk One",
+    wallet: "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+    chain: "solana",
+    warnings: [],
+    legs: [
+      leg("A", "drift", "SOL-PERP", "SOL", "long", 120_000, 120_000, 0.15, 142.5),
+      leg("A", "mock_equity", "tAAPL long", "AAPL", "long", 60_000, 60_000, 0.25, 190),
+    ],
+  },
+  b: {
+    party: "B",
+    label: "Desk Two",
+    wallet: "4Nd1mBQtrMJVYVf1fPtrC8q1cx4PzmpKvx64h3FsYytW",
+    chain: "solana",
+    warnings: [],
+    legs: [
+      leg("B", "drift", "SOL-PERP", "SOL", "short", 120_000, -120_000, 0.15, 142.5),
+      leg("B", "mock_equity", "tAAPL short", "AAPL", "short", 55_000, -55_000, 0.25, 190),
+    ],
+  },
+};
+
 export const monadPairs: Array<{ pairId: string; label: string; a: PositionBook; b: PositionBook }> = [
   {
     pairId: "p1",
