@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Luthren — Confidential Two-Party Clearing
 
-## Getting Started
+> Two parties, one net margin, neither sees the other's book. MPC on Solana, attested TEE on
+> Monad. TEE ≠ MPC, and we say so.
 
-First, run the development server:
+## What this frontend does
+
+This is the Next.js UI for the Luthren demo: two-party clearing sessions, the siloed-vs-netted
+margin comparison, the adversarial plaintext counterfactual, Monad parallel multi-pair clearing,
+and the two-agent x402 payment replay.
+
+- **Margin engine** (`lib/margin.ts`): per-party siloed IM, combined siloed, bucket-netted
+  combined, savings. Pure functions, single source of truth for the formula shape.
+- **Fixtures** (`lib/fixtures.ts`): labeled books — one Kamino leg marked `live` read-only, the
+  rest `mock`. Mock equity `tAAPL` is adapter-ready for xStocks/Backed; analytics never custody.
+- **Adversarial counterfactual** (`/adversarial`): explicit DANGEROUS plaintext view of both
+  books with a 20s auto-return — pitch contrast only, never the default path.
+- **Monad parallel panel** (`/monad`): three desk pairs clearing concurrently per epoch.
+- **Agents** (`/agents`): replayed x402 call flow (402 → pay → 200) with independent keys.
+
+## Honest status (frontend demo window)
+
+| Piece | Status |
+| --- | --- |
+| Two-party netting formula | **Real** code, simplified bucket haircuts, runs in-browser |
+| Position books | 1 leg labeled `live` (Kamino, read-only); rest labeled `mock` |
+| Confidential backends (Arcium / TEE) | **Not wired here** — UI replays the flow; wire from the repo's API/packages |
+| x402 payments | Recorded call flow replayed; wire scripts ship with the API |
+| Liquidation / capital movement | Not built — numbers only |
+
+Trust models: **Solana = cryptographic MPC; Monad = hardware-attested TEE. Both real
+confidentiality, different trust models.** See `/trust` in the app for the full table.
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # typecheck + lint via next build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Full product spec (backend matrix, API, Arcium/enclave plans): `docs/AGENT.md`.
+Brand tokens, palette, typography rules: `brand.md` — jade accent, no yellow/gold/amber.

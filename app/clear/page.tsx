@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { AlertTriangle, ArrowRight, LoaderCircle, Lock, Wallet } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { BackendBadge } from "@/components/backend-badge";
@@ -21,7 +21,7 @@ export default function ClearPage() {
   const [backend, setBackend] = useState<BackendKind>("simulated");
   const [stage, setStage] = useState<number>(-1);
   const [phase, setPhase] = useState<"setup" | "computing" | "done">("setup");
-  const timers = useMemo(() => ({ current: [] as ReturnType<typeof setTimeout>[] }), []);
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   const [bookA, setBookA] = useState(solanaPartyA);
   const [bookB, setBookB] = useState(solanaPartyB);
@@ -137,7 +137,6 @@ export default function ClearPage() {
           <MarginHero
             result={netted}
             siloedCombined={siloed.siloedCombined}
-            backend={backend}
             onReset={reset}
           />
         )}

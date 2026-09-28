@@ -3,17 +3,15 @@
 import { useMemo, useState } from "react";
 import { ArrowRight, RotateCcw } from "lucide-react";
 import Link from "next/link";
-import { usd, type BackendKind, type NetMarginResult } from "@/lib/margin";
+import { usd, type NetMarginResult } from "@/lib/margin";
 
 export function MarginHero({
   result,
   siloedCombined,
-  backend,
   onReset,
 }: {
   result: NetMarginResult;
   siloedCombined: number;
-  backend: BackendKind;
   onReset: () => void;
 }) {
   const pct = useMemo(

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { AlertTriangle, ArrowLeft, ShieldAlert } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
@@ -11,7 +11,6 @@ import { twoPartyNetted, twoPartySiloed, usd } from "@/lib/margin";
 export default function AdversarialPage() {
   const [confirmed, setConfirmed] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(20);
-  const dismissed = useRef(false);
 
   const siloed = useMemo(
     () => twoPartySiloed(adversarialBooks.a, adversarialBooks.b),
@@ -23,19 +22,12 @@ export default function AdversarialPage() {
   );
 
   useEffect(() => {
-    if (!confirmed || dismissed.current) return;
-    setSecondsLeft(20);
-    const t = setInterval(() => {
-      setSecondsLeft((s) => {
-        if (s <= 1) {
-          dismissed.current = true;
-          return 0;
-        }
-        return s - 1;
-      });
-    }, 1000);
-    return () => clearInterval(t);
-  }, [confirmed]);
+    if (!confirmed || secondsLeft === 0) return;
+    const t = setTimeout(() => setSecondsLeft((s) => s - 1), 1000);
+    return () => clearTimeout(t);
+  }, [confirmed, secondsLeft]);
+
+  const expired = secondsLeft === 0;
 
   if (!confirmed) {
     return (
@@ -85,7 +77,7 @@ export default function AdversarialPage() {
             them. That is why single-operator clearing fails — and why self-netting one wallet does
             not need MPC.
           </p>
-          {secondsLeft > 0 && !dismissed.current && (
+          {confirmed && secondsLeft > 0 && !expired && (
             <p className="mt-2 font-mono text-xs tabular-nums text-muted-foreground">
               Auto-return to confidential session in {secondsLeft}s
             </p>

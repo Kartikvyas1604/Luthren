@@ -44,14 +44,15 @@ function AgentTerminal({
   const [visible, setVisible] = useState(0);
 
   useEffect(() => {
-    if (!running) {
-      setVisible(0);
-      return;
-    }
-    if (visible >= lines.length) return;
+    if (!running || visible >= lines.length) return;
     const t = setTimeout(() => setVisible((v) => v + 1), 500);
     return () => clearTimeout(t);
   }, [running, visible, lines.length]);
+
+  function run() {
+    setVisible(0);
+    onRun();
+  }
 
   return (
     <section className="overflow-hidden rounded-lg border border-border bg-[#0d0f13]">
@@ -62,7 +63,7 @@ function AgentTerminal({
         </h2>
         <button
           type="button"
-          onClick={onRun}
+          onClick={run}
           disabled={disabled}
           className="inline-flex h-10 items-center rounded-md border border-border px-3 text-xs transition-colors duration-100 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
         >
