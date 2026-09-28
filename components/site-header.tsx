@@ -29,6 +29,12 @@ export function SiteHeader({ chain = "solana" }: { chain?: "solana" | "monad" })
           >
             Agents
           </Link>
+          <Link
+            href="/trust"
+            className="rounded-md px-3 py-2 text-muted-foreground transition-colors duration-100 hover:text-foreground hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Trust
+          </Link>
           <span
             className="ml-2 flex items-center gap-2 rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground"
             aria-label={`Network: ${chain === "solana" ? "Solana devnet" : "Monad testnet"}`}
