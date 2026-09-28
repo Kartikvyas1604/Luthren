@@ -23,7 +23,7 @@ function CopyAddress({ address }: { address: string }) {
           setCopied(false);
         }
       }}
-      className="inline-flex h-6 w-6 items-center justify-center rounded text-muted-foreground transition-colors duration-100 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="relative inline-flex h-6 w-6 items-center justify-center rounded text-muted-foreground transition-colors duration-100 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring after:absolute after:-inset-2"
       aria-label={copied ? "Address copied" : `Copy address ${truncateAddress(address)}`}
     >
       {copied ? (

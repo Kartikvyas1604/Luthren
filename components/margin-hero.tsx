@@ -40,7 +40,7 @@ export function MarginHero({
             Combined net margin
           </p>
           <p
-            className={`mt-2 font-mono text-4xl font-medium tabular-nums md:text-5xl flash-jade ${
+            className={`mt-2 font-mono text-4xl font-medium tabular-nums md:text-5xl ${
               announced ? "" : "flash-jade"
             }`}
             onAnimationEnd={() => setAnnounced(true)}
