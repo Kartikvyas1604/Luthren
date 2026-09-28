@@ -8,7 +8,7 @@ const LABELS: Record<BackendKind, { text: string; cls: string; note: string }> =
   },
   enclave: {
     text: "TEE attested",
-    cls: "border-sky-400/40 text-sky-300",
+    cls: "border-slate-400/40 text-slate-300",
     note: "Hardware-attested enclave — same formula, different trust model than MPC",
   },
   simulated: {

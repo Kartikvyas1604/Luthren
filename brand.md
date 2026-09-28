@@ -6,27 +6,26 @@ _Status: active_
 
 Luthren is confidential two-party clearing for trading desks. Voice: precise, calm, honest. Short declarative sentences. Numbers do the persuading; no hype, no gradient hero copy. We name tradeoffs aloud ("TEE ≠ MPC"). Never overclaim.
 
-## Palette — "Ink & Jade"
+## Palette — "Graphite & Azure"
 
-Dark-first. Surfaces deepen as they elevate. No yellow, gold, or amber anywhere (hard user rule). Single accent: jade.
+Dark-first, professional fintech grade. Neutral graphite surfaces (no color tint), near-white text, one refined azure accent. Savings/success uses a separate semantic green. No yellow, gold, or amber anywhere (hard user rule).
 
 | Token | Light value | Dark value |
 | --- | --- | --- |
-| background | #FAFAF8 (warm paper) | #0B0C0F (ink) |
-| surface (card) | #FFFFFF | #14161B |
-| popover | #FFFFFF | #1A1D23 |
-| foreground | #1A1C20 | #ECEDEF |
-| muted-foreground | #5A5E66 | #9BA1AB |
-| border | #E4E4E0 | #262A31 |
-| **primary (jade)** | #0E8A6B (AA on white) | #3ECF9E |
-| primary-foreground | #FFFFFF | #0B0C0F |
-| ring | #0E8A6B | #3ECF9E |
+| background | #F7F8F9 (cool paper) | #0C0D10 (graphite) |
+| surface (card) | #FFFFFF | #131519 |
+| popover | #FFFFFF | #17191E |
+| foreground | #17181B | #E7E9ED |
+| muted-foreground | #565B64 | #9BA3AF |
+| border | #E3E5E8 | #24272E |
+| **primary (azure)** | #1D5FD1 (AA on white) | #5C93F5 |
+| primary-foreground | #FFFFFF | #0C0D10 |
+| ring | #1D5FD1 | #5C93F5 |
 | destructive | #C44A3E | #E05E52 |
-| warning | #B45309 | #E8A33D *(chip text only, AA-checked)* |
-| success | #0E8A6B | #3ECF9E |
-| constructive (both-lost) | — | #C0638A (plum) |
+| success | #0E7A5A | #4CC38A |
+| TEE/secondary marker | muted gray | slate-300/400 |
 
-Rule: jade appears only where meaning exists — the savings delta, trust chips, primary CTA. Semantic red = "both books leak". Semantic warning-text used sparingly, never as a decorative accent, never as page chrome. On ink, muted text ≥ #9BA1AB to pass 4.5:1.
+Rule: azure appears on CTAs, focus rings, trust chips, and the Monad progress states. Green (`success`) is semantic only — savings delta and "freed" numbers. Red = destructive/leak. Neutral slate marks the Monad TEE distinction. On ink, muted text ≥ #9BA3AF to pass 4.5:1.
 
 ## Typography
 

@@ -39,7 +39,7 @@ export function SiteHeader({ chain = "solana" }: { chain?: "solana" | "monad" })
             className="ml-2 flex items-center gap-2 rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground"
             aria-label={`Network: ${chain === "solana" ? "Solana devnet" : "Monad testnet"}`}
           >
-            <span className={`h-2 w-2 rounded-full ${chain === "solana" ? "bg-primary" : "bg-sky-400"}`} aria-hidden />
+            <span className={`h-2 w-2 rounded-full ${chain === "solana" ? "bg-primary" : "bg-slate-400"}`} aria-hidden />
             {chain === "solana" ? "devnet" : "testnet"}
           </span>
         </nav>

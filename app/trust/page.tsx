@@ -13,7 +13,7 @@ const REAL_VS_MOCKED: Array<[string, string, "real" | "mock" | "partial"]> = [
 
 const STATUS_STYLES = {
   real: "border-primary/40 bg-primary/10 text-primary",
-  partial: "border-sky-400/40 bg-sky-400/10 text-sky-300",
+  partial: "border-muted bg-muted text-muted-foreground",
   mock: "border-border text-muted-foreground",
 } as const;
 
@@ -47,7 +47,7 @@ export default function TrustPage() {
             </p>
           </div>
           <div className="rounded-lg border border-border bg-card p-6">
-            <h2 className="font-mono text-xs uppercase tracking-widest text-sky-300">
+            <h2 className="font-mono text-xs uppercase tracking-widest font-mono text-slate-300">
               Monad — hardware-attested TEE
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">

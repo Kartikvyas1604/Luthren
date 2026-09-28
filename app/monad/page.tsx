@@ -40,7 +40,7 @@ export default function MonadPage() {
       <div className="flex flex-col gap-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-sky-300">
+            <p className="font-mono text-xs uppercase tracking-widest text-slate-300">
               Monad · parallel multi-pair clearing
             </p>
             <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight md:text-4xl">
@@ -51,8 +51,8 @@ export default function MonadPage() {
               as the Solana path, attested TEE trust model — TEE ≠ MPC.
             </p>
           </div>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-sky-400/40 px-2.5 py-1 font-mono text-xs text-sky-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-sky-400" aria-hidden />
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-400/40 px-2.5 py-1 font-mono text-xs text-slate-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-slate-400" aria-hidden />
             TEE attested · fixture books
           </span>
         </div>
@@ -130,7 +130,7 @@ export default function MonadPage() {
                   </div>
                   <div className="flex items-baseline justify-between">
                     <dt className="text-xs text-muted-foreground">Freed</dt>
-                    <dd className="font-mono text-sm font-medium tabular-nums text-primary">
+                    <dd className="font-mono text-sm font-medium tabular-nums text-success">
                       {cleared ? usd(r.net.savingsUsd, 0) : "——"}
                     </dd>
                   </div>

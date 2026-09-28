@@ -39,7 +39,7 @@ export function MarginHero({
           </p>
           <p
             className={`mt-2 font-mono text-4xl font-medium tabular-nums md:text-5xl ${
-              announced ? "" : "flash-jade"
+              announced ? "" : "flash-accent"
             }`}
             onAnimationEnd={() => setAnnounced(true)}
           >
@@ -48,10 +48,10 @@ export function MarginHero({
         </div>
         <div className="text-right">
           <p className="text-xs text-muted-foreground">Capital freed</p>
-          <p className="mt-1 font-mono text-2xl font-medium tabular-nums text-primary">
+          <p className="mt-1 font-mono text-2xl font-medium tabular-nums text-success">
             {usd(result.savingsUsd, 0)}
           </p>
-          <p className="font-mono text-xs tabular-nums text-primary">
+          <p className="font-mono text-xs tabular-nums text-success">
             {pct}% vs siloed
           </p>
         </div>

@@ -1,47 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fafaf8;
-  --foreground: #1a1c20;
+  --background: #f7f8f9;
+  --foreground: #17181b;
   --card: #ffffff;
-  --card-foreground: #1a1c20;
+  --card-foreground: #17181b;
   --popover: #ffffff;
-  --popover-foreground: #1a1c20;
-  --primary: #0e8a6b;
+  --popover-foreground: #17181b;
+  --primary: #1d5fd1;
   --primary-foreground: #ffffff;
-  --secondary: #f0f0ec;
-  --secondary-foreground: #1a1c20;
-  --muted: #f0f0ec;
-  --muted-foreground: #5a5e66;
-  --accent: #e8f4ef;
-  --accent-foreground: #0e8a6b;
+  --secondary: #eef0f2;
+  --secondary-foreground: #17181b;
+  --muted: #eef0f2;
+  --muted-foreground: #565b64;
+  --accent: #e8effc;
+  --accent-foreground: #1d5fd1;
   --destructive: #c44a3e;
   --destructive-foreground: #ffffff;
-  --border: #e4e4e0;
-  --input: #e4e4e0;
-  --ring: #0e8a6b;
+  --success: #0e7a5a;
+  --border: #e3e5e8;
+  --input: #e3e5e8;
+  --ring: #1d5fd1;
 }
 
 .dark {
-  --background: #0b0c0f;
-  --foreground: #ecedef;
-  --card: #14161b;
-  --card-foreground: #ecedef;
-  --popover: #1a1d23;
-  --popover-foreground: #ecedef;
-  --primary: #3ecf9e;
-  --primary-foreground: #0b0c0f;
-  --secondary: #1e222a;
-  --secondary-foreground: #ecedef;
-  --muted: #1e222a;
-  --muted-foreground: #9ba1ab;
-  --accent: #143329;
-  --accent-foreground: #3ecf9e;
+  --background: #0c0d10;
+  --foreground: #e7e9ed;
+  --card: #131519;
+  --card-foreground: #e7e9ed;
+  --popover: #17191e;
+  --popover-foreground: #e7e9ed;
+  --primary: #5c93f5;
+  --primary-foreground: #0c0d10;
+  --secondary: #1b1e24;
+  --secondary-foreground: #e7e9ed;
+  --muted: #1b1e24;
+  --muted-foreground: #9ba3af;
+  --accent: #16223a;
+  --accent-foreground: #7dabfa;
   --destructive: #e05e52;
-  --destructive-foreground: #0b0c0f;
-  --border: #262a31;
-  --input: #262a31;
-  --ring: #3ecf9e;
+  --destructive-foreground: #0c0d10;
+  --success: #4cc38a;
+  --border: #24272e;
+  --input: #24272e;
+  --ring: #5c93f5;
 }
 
 @theme inline {
@@ -61,6 +63,7 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -76,10 +79,10 @@ body {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .flash-jade {
-    animation: flash-jade 600ms ease-out;
+  .flash-accent {
+    animation: flash-accent 600ms ease-out;
   }
-  @keyframes flash-jade {
+  @keyframes flash-accent {
     0% {
       color: var(--primary);
     }
