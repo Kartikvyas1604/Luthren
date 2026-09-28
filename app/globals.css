@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafaf8;
+  --foreground: #1a1c20;
+  --card: #ffffff;
+  --card-foreground: #1a1c20;
+  --popover: #ffffff;
+  --popover-foreground: #1a1c20;
+  --primary: #0e8a6b;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f0ec;
+  --secondary-foreground: #1a1c20;
+  --muted: #f0f0ec;
+  --muted-foreground: #5a5e66;
+  --accent: #e8f4ef;
+  --accent-foreground: #0e8a6b;
+  --destructive: #c44a3e;
+  --destructive-foreground: #ffffff;
+  --border: #e4e4e0;
+  --input: #e4e4e0;
+  --ring: #0e8a6b;
+}
+
+.dark {
+  --background: #0b0c0f;
+  --foreground: #ecedef;
+  --card: #14161b;
+  --card-foreground: #ecedef;
+  --popover: #1a1d23;
+  --popover-foreground: #ecedef;
+  --primary: #3ecf9e;
+  --primary-foreground: #0b0c0f;
+  --secondary: #1e222a;
+  --secondary-foreground: #ecedef;
+  --muted: #1e222a;
+  --muted-foreground: #9ba1ab;
+  --accent: #143329;
+  --accent-foreground: #3ecf9e;
+  --destructive: #e05e52;
+  --destructive-foreground: #0b0c0f;
+  --border: #262a31;
+  --input: #262a31;
+  --ring: #3ecf9e;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-serif: var(--font-fraunces);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .flash-jade {
+    animation: flash-jade 600ms ease-out;
+  }
+  @keyframes flash-jade {
+    0% {
+      color: var(--primary);
+    }
+    100% {
+      color: var(--foreground);
+    }
+  }
 }
