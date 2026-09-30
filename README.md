@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="public/logo.svg" alt="Obligor logo — two offset pill bars, a gold exposure bar netting into a steel counterparty bar" width="96" />
-
-# Obligor
+# <img src="public/logo.svg" alt="Obligor logo — two offset pill bars, a gold exposure bar netting into a steel counterparty bar" width="36" /> Obligor
 
 **Confidential Two-Party Clearing**
 
