@@ -30,7 +30,7 @@ export default function Home() {
               </p>
               <h1 className="mt-5 max-w-2xl font-serif text-4xl font-medium leading-[1.08] tracking-tight md:text-6xl">
                 Two parties, one net margin,{" "}
-                <span className="text-primary">neither sees the other&rsquo;s book.</span>
+                <span className="text-primary italic">neither sees the other&rsquo;s book.</span>
               </h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
                 Luthren nets distinct desks&rsquo; DeFi positions against each other under MPC on
