@@ -54,7 +54,7 @@ function AgentTerminal({
   }
 
   return (
-    <section className="overflow-hidden rounded-lg border border-border bg-[#0d0f13]">
+    <section className="overflow-hidden rounded-lg border border-border bg-[#121a1c]">
       <header className="flex items-center justify-between border-b border-border px-4 py-3">
         <div className="flex items-center gap-3">
           <span className="flex gap-1.5" aria-hidden>

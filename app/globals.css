@@ -1,49 +1,49 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f8f9;
-  --foreground: #17181b;
+  --background: #edf2f4;
+  --foreground: #394a4d;
   --card: #ffffff;
-  --card-foreground: #17181b;
+  --card-foreground: #394a4d;
   --popover: #ffffff;
-  --popover-foreground: #17181b;
-  --primary: #1d5fd1;
-  --primary-foreground: #ffffff;
-  --secondary: #eef0f2;
-  --secondary-foreground: #17181b;
-  --muted: #eef0f2;
-  --muted-foreground: #565b64;
-  --accent: #e8effc;
-  --accent-foreground: #1d5fd1;
+  --popover-foreground: #394a4d;
+  --primary: #006400;
+  --primary-foreground: #edf2f4;
+  --secondary: #e1e9ec;
+  --secondary-foreground: #394a4d;
+  --muted: #e1e9ec;
+  --muted-foreground: #4e5f63;
+  --accent: #d9ecd4;
+  --accent-foreground: #006400;
   --destructive: #c44a3e;
   --destructive-foreground: #ffffff;
-  --success: #0e7a5a;
-  --border: #e3e5e8;
-  --input: #e3e5e8;
-  --ring: #1d5fd1;
+  --success: #008000;
+  --border: #d4dde0;
+  --input: #d4dde0;
+  --ring: #006400;
 }
 
 .dark {
-  --background: #0c0d10;
-  --foreground: #e7e9ed;
-  --card: #131519;
-  --card-foreground: #e7e9ed;
-  --popover: #17191e;
-  --popover-foreground: #e7e9ed;
-  --primary: #5c93f5;
-  --primary-foreground: #0c0d10;
-  --secondary: #1b1e24;
-  --secondary-foreground: #e7e9ed;
-  --muted: #1b1e24;
-  --muted-foreground: #9ba3af;
-  --accent: #16223a;
-  --accent-foreground: #7dabfa;
+  --background: #0f1618;
+  --foreground: #edf2f4;
+  --card: #172023;
+  --card-foreground: #edf2f4;
+  --popover: #1c2629;
+  --popover-foreground: #edf2f4;
+  --primary: #70e000;
+  --primary-foreground: #0f1618;
+  --secondary: #232f32;
+  --secondary-foreground: #edf2f4;
+  --muted: #232f32;
+  --muted-foreground: #9bacb6;
+  --accent: #16301a;
+  --accent-foreground: #70e000;
   --destructive: #e05e52;
-  --destructive-foreground: #0c0d10;
-  --success: #4cc38a;
-  --border: #24272e;
-  --input: #24272e;
-  --ring: #5c93f5;
+  --destructive-foreground: #0f1618;
+  --success: #70e000;
+  --border: #2a3539;
+  --input: #2a3539;
+  --ring: #70e000;
 }
 
 @theme inline {

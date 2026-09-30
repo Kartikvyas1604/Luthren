@@ -6,26 +6,27 @@ _Status: active_
 
 Luthren is confidential two-party clearing for trading desks. Voice: precise, calm, honest. Short declarative sentences. Numbers do the persuading; no hype, no gradient hero copy. We name tradeoffs aloud ("TEE ≠ MPC"). Never overclaim.
 
-## Palette — "Graphite & Azure"
+## Palette — "Verdant Slate" (Coolors user palette)
 
-Dark-first, professional fintech grade. Neutral graphite surfaces (no color tint), near-white text, one refined azure accent. Savings/success uses a separate semantic green. No yellow, gold, or amber anywhere (hard user rule).
+User-specified palette: `#006400 · #008000 · #70E000 · #EDF2F4 · #9BACB6 · #394A4D`.
+Dark-first. Deep slate-teal surfaces derived from #394A4D, near-white #EDF2F4 text, single bright green #70E000 accent. No yellow, gold, or amber anywhere (hard user rule).
 
 | Token | Light value | Dark value |
 | --- | --- | --- |
-| background | #F7F8F9 (cool paper) | #0C0D10 (graphite) |
-| surface (card) | #FFFFFF | #131519 |
-| popover | #FFFFFF | #17191E |
-| foreground | #17181B | #E7E9ED |
-| muted-foreground | #565B64 | #9BA3AF |
-| border | #E3E5E8 | #24272E |
-| **primary (azure)** | #1D5FD1 (AA on white) | #5C93F5 |
-| primary-foreground | #FFFFFF | #0C0D10 |
-| ring | #1D5FD1 | #5C93F5 |
+| background | #EDF2F4 (palette off-white) | #0F1618 (darkened #394A4D) |
+| surface (card) | #FFFFFF | #172023 |
+| popover | #FFFFFF | #1C2629 |
+| foreground | #394A4D | #EDF2F4 |
+| muted-foreground | #4E5F63 (AA-darkened #9BACB6) | #9BACB6 |
+| border | #D4DDE0 | #2A3539 |
+| **primary (green)** | #006400 (AA on white) | #70E000 |
+| primary-foreground | #EDF2F4 | #0F1618 |
+| ring | #006400 | #70E000 |
 | destructive | #C44A3E | #E05E52 |
-| success | #0E7A5A | #4CC38A |
-| TEE/secondary marker | muted gray | slate-300/400 |
+| success | #008000 | #70E000 |
+| TEE/secondary marker | muted gray | #9BACB6 (slate) |
 
-Rule: azure appears on CTAs, focus rings, trust chips, and the Monad progress states. Green (`success`) is semantic only — savings delta and "freed" numbers. Red = destructive/leak. Neutral slate marks the Monad TEE distinction. On ink, muted text ≥ #9BA3AF to pass 4.5:1.
+Rule: bright green #70E000 is the accent — CTAs, focus rings, trust chips, savings numbers. #9BACB6 slate marks the Monad TEE distinction. Red = destructive/leak. Muted text never lighter than #9BACB6 on dark.
 
 ## Typography
 

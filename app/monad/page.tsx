@@ -77,7 +77,7 @@ export default function MonadPage() {
               </span>
             </p>
             <div className="mt-4 h-1 overflow-hidden rounded-full bg-secondary" aria-hidden>
-              <div className="anim-shimmer h-full w-full rounded-full bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
+              <div className="anim-shimmer h-full w-full rounded-full bg-gradient-to-r from-transparent via-primary to-transparent" />
             </div>
             <ol className="mt-4 space-y-2">
               {EPOCH_STAGES.map((s, i) => (
@@ -112,7 +112,7 @@ export default function MonadPage() {
                 key={r.pairId}
                 className={`anim-fade-up rounded-xl border bg-card p-5 transition-all duration-300 ${
                   cleared
-                    ? "border-primary/40 shadow-[0_0_30px_rgba(92,147,245,0.07)]"
+                    ? "border-primary/40 shadow-[0_0_30px_rgba(112,224,0,0.07)]"
                     : "border-border opacity-60"
                 }`}
                 style={{ animationDelay: `${i * 80}ms` }}
