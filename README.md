@@ -1,21 +1,19 @@
+<div align="center">
+
+<img src="public/logo.svg" alt="Obligor logo — two offset pill bars, a gold exposure bar netting into a steel counterparty bar" width="96" />
+
 # Obligor
 
-<p align="center">
-  <img src="public/logo.svg" alt="Obligor logo — two offset pill bars, a gold exposure bar netting into a steel counterparty bar" width="96" />
-</p>
+**Confidential Two-Party Clearing**
 
-<h1 align="center">Obligor — Confidential Two-Party Clearing</h1>
+*Two parties, one net margin, neither sees the other's book.*
+Cryptographic MPC on Solana · attested TEE on Monad · x402 machine payments
 
-<p align="center">
-  <em>Two parties, one net margin, neither sees the other's book.</em><br/>
-  Cryptographic MPC on Solana · attested TEE on Monad · x402 machine payments
-</p>
+<a href="#license"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-E5B84B" /></a>
+<a href="#running-locally"><img alt="Next.js 16" src="https://img.shields.io/badge/Next.js-16-0A0B0D" /></a>
+<img alt="Status: demo" src="https://img.shields.io/badge/status-honest%20demo-9FB6C4" />
 
-<p align="center">
-  <a href="#license"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-E5B84B" /></a>
-  <a href="#running-locally"><img alt="Next.js 16" src="https://img.shields.io/badge/Next.js-16-0A0B0D" /></a>
-  <img alt="Status: demo" src="https://img.shields.io/badge/status-honest%20demo-9FB6C4" />
-</p>
+</div>
 
 ---
 
