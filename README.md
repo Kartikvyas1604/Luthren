@@ -1,11 +1,11 @@
-# Luthren — Confidential Two-Party Clearing
+# Obligor — Confidential Two-Party Clearing
 
 > Two parties, one net margin, neither sees the other's book. MPC on Solana, attested TEE on
 > Monad. TEE ≠ MPC, and we say so.
 
 ## What this frontend does
 
-This is the Next.js UI for the Luthren demo: two-party clearing sessions, the siloed-vs-netted
+This is the Next.js UI for the Obligor demo: two-party clearing sessions, the siloed-vs-netted
 margin comparison, the adversarial plaintext counterfactual, Monad parallel multi-pair clearing,
 and the two-agent x402 payment replay.
 

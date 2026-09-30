@@ -62,16 +62,16 @@ export function MarginHero({
             }`}
             onAnimationEnd={() => setAnnounced(true)}
           >
-            {usd(nettedValue, 0)}
+            {usd(nettedValue)}
           </p>
           <p className="mt-1 font-mono text-xs text-muted-foreground tabular-nums">
-            net exposure {usd(Math.abs(result.netExposureUsd), 0)}
+            net exposure {usd(Math.abs(result.netExposureUsd))}
           </p>
         </div>
         <div className="text-right">
           <p className="text-xs text-muted-foreground">Capital freed</p>
           <p className="mt-1 font-mono text-2xl font-medium tabular-nums text-success">
-            {usd(savingsValue, 0)}
+            {usd(savingsValue)}
           </p>
           <p className="font-mono text-xs tabular-nums text-success">{pct}% vs siloed</p>
         </div>
@@ -82,7 +82,7 @@ export function MarginHero({
           <div className="flex items-baseline justify-between text-xs">
             <span className="text-muted-foreground">Siloed combined</span>
             <span className="font-mono tabular-nums text-muted-foreground">
-              {usd(result.siloedCombinedUsd, 0)}
+              {usd(result.siloedCombinedUsd)}
             </span>
           </div>
           <div className="mt-1.5">
@@ -93,7 +93,7 @@ export function MarginHero({
           <div className="flex items-baseline justify-between text-xs">
             <span className="font-medium text-foreground">Netted combined</span>
             <span className="font-mono tabular-nums text-foreground">
-              {usd(result.nettedCombinedUsd, 0)}
+              {usd(result.nettedCombinedUsd)}
             </span>
           </div>
           <div className="mt-1.5">
@@ -103,7 +103,7 @@ export function MarginHero({
         <div>
           <div className="flex items-baseline justify-between text-xs">
             <span className="font-medium text-success">Savings</span>
-            <span className="font-mono tabular-nums text-success">{usd(result.savingsUsd, 0)}</span>
+            <span className="font-mono tabular-nums text-success">{usd(result.savingsUsd)}</span>
           </div>
           <div className="mt-1.5">
             <Bar target={savingsPct} tone="success" delay={400} />
@@ -136,7 +136,7 @@ export function MarginHero({
                   tone="primary"
                 />
               </span>
-              <span className="w-24 text-right font-mono text-sm tabular-nums">{usd(b.imUsd, 0)}</span>
+              <span className="w-24 text-right font-mono text-sm tabular-nums">{usd(b.imUsd)}</span>
             </li>
           ))}
         </ul>

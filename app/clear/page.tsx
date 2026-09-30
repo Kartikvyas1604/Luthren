@@ -1,11 +1,13 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AlertTriangle, ArrowRight, LoaderCircle, Lock, Wallet } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { BackendBadge } from "@/components/backend-badge";
 import { BookColumn } from "@/components/book-column";
 import { MarginHero } from "@/components/margin-hero";
+import { NettingCalculator } from "@/components/netting-calculator";
+import { WalletConnect } from "@/components/wallet-connect";
 import { adversarialBooks, solanaPartyA, solanaPartyB } from "@/lib/fixtures";
 import { twoPartyNetted, twoPartySiloed, type BackendKind } from "@/lib/margin";
 
@@ -21,10 +23,15 @@ export default function ClearPage() {
   const [backend, setBackend] = useState<BackendKind>("simulated");
   const [stage, setStage] = useState<number>(-1);
   const [phase, setPhase] = useState<"setup" | "computing" | "done">("setup");
-  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   const [bookA, setBookA] = useState(solanaPartyA);
   const [bookB, setBookB] = useState(solanaPartyB);
+
+  useEffect(() => {
+    const timers = timersRef.current;
+    return () => timers.forEach(clearTimeout);
+  }, []);
 
   const siloed = useMemo(() => twoPartySiloed(bookA, bookB), [bookA, bookB]);
   const netted = useMemo(() => twoPartyNetted(bookA, bookB), [bookA, bookB]);
@@ -39,15 +46,23 @@ export default function ClearPage() {
     setBookB(adversarialBooks.b);
   }
 
+  function connectPartyA(address: string) {
+    setBookA((b) => ({ ...b, wallet: address }));
+  }
+
+  function disconnectPartyA() {
+    setBookA(solanaPartyA);
+  }
+
   function compute() {
-    timers.current.forEach(clearTimeout);
-    timers.current = [];
+    timersRef.current.forEach(clearTimeout);
+    timersRef.current = [];
     setPhase("computing");
     setStage(0);
     STAGES.forEach((_, i) => {
-      timers.current.push(setTimeout(() => setStage(i), i * 700));
+      timersRef.current.push(setTimeout(() => setStage(i), i * 700));
     });
-    timers.current.push(
+    timersRef.current.push(
       setTimeout(() => {
         setPhase("done");
         setBackend("simulated");
@@ -56,8 +71,8 @@ export default function ClearPage() {
   }
 
   function reset() {
-    timers.current.forEach(clearTimeout);
-    timers.current = [];
+    timersRef.current.forEach(clearTimeout);
+    timersRef.current = [];
     setStage(-1);
     setPhase("setup");
   }
@@ -82,6 +97,12 @@ export default function ClearPage() {
 
         {phase === "setup" && (
           <section aria-label="Party setup" className="flex flex-wrap items-center gap-3">
+            <WalletConnect
+              variant="block"
+              label="Connect Party A wallet"
+              onConnect={connectPartyA}
+              onDisconnect={disconnectPartyA}
+            />
             <button
               type="button"
               onClick={loadFixture}
@@ -109,6 +130,8 @@ export default function ClearPage() {
             </button>
           </section>
         )}
+
+        <NettingCalculator />
 
         {phase === "computing" && (
           <section aria-label="Computing" aria-busy="true" className="anim-fade-up rounded-xl border border-primary/30 bg-card p-6">

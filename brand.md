@@ -1,10 +1,10 @@
-# Brand — Luthren
+# Brand — Obligor
 
 _Status: active_
 
 ## Voice
 
-Luthren is confidential two-party clearing for trading desks. Voice: precise, calm, honest. Short declarative sentences. Numbers do the persuading; no hype, no gradient hero copy. We name tradeoffs aloud ("TEE ≠ MPC"). Never overclaim.
+Obligor is confidential two-party clearing for trading desks. Voice: precise, calm, honest. Short declarative sentences. Numbers do the persuading; no hype, no gradient hero copy. We name tradeoffs aloud ("TEE ≠ MPC"). Never overclaim.
 
 ## Palette — "Bullion" (gold on ink)
 

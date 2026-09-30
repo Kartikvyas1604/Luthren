@@ -1,4 +1,4 @@
-# Luthren — AGENT.md
+# Obligor — AGENT.md
 
 > **Read this first — TWO CRITICAL PIVOTS (supersede all prior designs).**
 >
@@ -6,7 +6,7 @@
 >
 > An external review correctly identified that netting a *single user's own* positions across protocols does **NOT** need confidential compute: that user already holds all the data and can run the formula client-side. A product that only “protects a party from themselves” is privacy theater.
 >
-> **Luthren is two-party / cross-counterparty netting.** Two distinct wallets or desks (agent desk vs counterparty) each submit their own position set into a confidential computation. The computation outputs a **combined net margin**. Neither party, and not the Luthren operator, ever sees the other side’s full book in confidential mode.
+> **obligor is two-party / cross-counterparty netting.** Two distinct wallets or desks (agent desk vs counterparty) each submit their own position set into a confidential computation. The computation outputs a **combined net margin**. Neither party, and not the obligor operator, ever sees the other side’s full book in confidential mode.
 >
 > If you catch yourself building single-wallet self-netting, **stop and re-read this preamble.** That design is dead. Do not resurrect it under a new name.
 >
@@ -14,7 +14,7 @@
 >
 > Prior AGENT.md treated netting as **Arcium-only** and Monad as a thin stretch port. That is wrong.
 >
-> **Luthren = the two-party netting formula + a pluggable `ConfidentialBackend`.** Per chain, ship the **strongest honest backend** and label the trust model aloud:
+> **obligor = the two-party netting formula + a pluggable `ConfidentialBackend`.** Per chain, ship the **strongest honest backend** and label the trust model aloud:
 >
 > | Chain | Backend | Trust model | Role |
 > | --- | --- | --- | --- |
@@ -27,7 +27,7 @@
 >
 > **Monad-native differentiator (not a costume port):** **parallel multi-pair clearing** — net **N desk pairs concurrently per epoch** (≥3 pairs on screen), using Monad parallelism/throughput. Judges must see concurrent pairs, not a solitary Solana clone.
 >
-> **Honest ceiling:** Medium–High confidentiality on Monad is **not** reachable in 2 weeks without Arcium-class crypto MPC. TEE delivers **solid Medium real confidentiality** (hardware-attested). Do **not** pretend TEE = MPC. README must state: **Solana = cryptographic MPC; Monad = hardware-attested TEE; both real confidentiality, different trust models.** Loose precedent that TEE-confidential compute exists in crypto (cite BlackBox / Crypto Dropcopy style projects loosely — do not claim they are Luthren predecessors).
+> **Honest ceiling:** Medium–High confidentiality on Monad is **not** reachable in 2 weeks without Arcium-class crypto MPC. TEE delivers **solid Medium real confidentiality** (hardware-attested). Do **not** pretend TEE = MPC. README must state: **Solana = cryptographic MPC; Monad = hardware-attested TEE; both real confidentiality, different trust models.** Loose precedent that TEE-confidential compute exists in crypto (cite BlackBox / Crypto Dropcopy style projects loosely — do not claim they are obligor predecessors).
 >
 > **Colosseum remains primary** (bigger prize, judge fit). Win Colosseum; TEE-Monad = expansion proof. **Hard rule:** if Solana wobbles by day 9, **kill Monad without ceremony.**
 >
@@ -39,7 +39,7 @@
 
 ## 1. One-Liner
 
-**Luthren** is confidential two-party clearing that nets distinct desks’ DeFi positions against each other via a **pluggable confidential backend** — **Arcium MPC on Solana** (primary), **attested TEE on Monad** (parallel multi-pair expansion) — so neither sees the other’s book; agents pay per call via x402.
+**obligor** is confidential two-party clearing that nets distinct desks’ DeFi positions against each other via a **pluggable confidential backend** — **Arcium MPC on Solana** (primary), **attested TEE on Monad** (parallel multi-pair expansion) — so neither sees the other’s book; agents pay per call via x402.
 
 ---
 
@@ -102,12 +102,12 @@ Max three load-bearing partners. Do not spray sponsor logos. **Replace “two bu
 **Honest wedge (no invented TAM):**
 
 - Cross-counterparty margin fragmentation is a real TradFi product category (CCP / prime brokerage). DeFi has no equivalent that mutually distrusting desks will use without leaking books.
-- Single-party self-netting is **not** the wedge — it needs no confidential compute and will eventually be free client-side software. Pitching that as Luthren is a category error.
+- Single-party self-netting is **not** the wedge — it needs no confidential compute and will eventually be free client-side software. Pitching that as obligor is a category error.
 - The durable moat is the **mutually-distrusting two-party case**: both sides seal inputs; only combined net margin leaves the confidential path.
 - **Pluggable backends are the distribution strategy:** strongest honest confidentiality per chain (MPC where available; TEE where MPC isn’t). Different trust models, same formula, same API.
 - Agent commerce via **x402** makes per-call clearing quotes machine-payable without API-key accounts ([Solana x402](https://solana.com/docs/payments/agentic-payments/x402), [Monad x402 guide](https://docs.monad.xyz/guides/x402), [docs.x402.org](https://docs.x402.org)).
 - **Business-model honesty:** a `$0.01`/call fee is a **wedge / demo monetization**, not venture-scale revenue. Do not multiply by invented agent counts. Durable value is the two-party confidentiality property; client-side single-party netting could eventually be free.
-- **Equity / Robinhood honesty:** mock `tAAPL` demonstrates cross-asset texture and **adapter readiness** for tokenized-equity rails (xStocks/Backed on Solana RO; Robinhood-style venues later). Luthren is **analytics / clearing compute**, never custody, never a securities exchange.
+- **Equity / Robinhood honesty:** mock `tAAPL` demonstrates cross-asset texture and **adapter readiness** for tokenized-equity rails (xStocks/Backed on Solana RO; Robinhood-style venues later). obligor is **analytics / clearing compute**, never custody, never a securities exchange.
 - **Unknown / do not fabricate:** addressable market size, multi-desk pair counts, LOIs, waitlists. Pitch the demo and the sink-question answers (“why MPC?” / “why TEE on Monad?”), not fake TAM slides.
 
 ---
@@ -274,7 +274,7 @@ export interface ConfidentialBackend {
 ### Repo layout
 
 ```
-Luthren/
+obligor/
   AGENT.md                 # this file
   README.md                # honest real-vs-mocked + TEE≠MPC + business-model honesty
   apps/
@@ -286,9 +286,9 @@ Luthren/
     confidential/          # ConfidentialBackend + arcium + enclave + simulated
     config/                # env schema, haircuts, demo wallets, chain network strings
   programs/
-    Luthren-mxe/         # arcium init: Arcis two_party_portfolio_net + Anchor
+    obligor-mxe/         # arcium init: Arcis two_party_portfolio_net + Anchor
   enclave/
-    Luthren-enclave/     # Rust Nitro/Oyster enclave: same two_party_netted + attestation
+    obligor-enclave/     # Rust Nitro/Oyster enclave: same two_party_netted + attestation
   scripts/
     seed-mock-equity.ts
     demo-agent-a.ts        # x402 client — Party A (Solana)
@@ -298,7 +298,7 @@ Luthren/
   .env.example
 ```
 
-**Assumption (stated, not invented):** Arcium Arcis accepts multiple encrypted inputs in one instruction (documented pattern: `add_private(a: Enc<Shared, u64>, b: Enc<Shared, u64>)`). Luthren pads each party’s legs to fixed `N` (e.g. 8) and passes `Enc` arrays for A and B. If current docs require a different ownership / Shared pattern for multi-submitter flows, follow Hello World + Input/Output docs exactly and document the adaptation in README — do not invent fake Arcis APIs.
+**Assumption (stated, not invented):** Arcium Arcis accepts multiple encrypted inputs in one instruction (documented pattern: `add_private(a: Enc<Shared, u64>, b: Enc<Shared, u64>)`). obligor pads each party’s legs to fixed `N` (e.g. 8) and passes `Enc` arrays for A and B. If current docs require a different ownership / Shared pattern for multi-submitter flows, follow Hello World + Input/Output docs exactly and document the adaptation in README — do not invent fake Arcis APIs.
 
 **TEE assumption:** Nitro or Oyster can accept two sealed inputs, run pure netting, and return attestation + scalar outputs within 3–4 days of integration for a hello-world-shaped workload. Prefer the provider whose attested hello-world works first in the days 1–2 spike.
 
@@ -558,7 +558,7 @@ Dev-only. Seeds known offsetting books for A and B (e.g. A: Kamino SOL lend + tA
 
 Dev-only. Seeds ≥3 offsetting Monad desk pairs for the parallel clearing screen.
 
-### Arcium program (`programs/Luthren-mxe`)
+### Arcium program (`programs/obligor-mxe`)
 
 Follow Arcium Hello World lifecycle ([docs](https://docs.arcium.com/developers/hello-world.md)):
 
@@ -576,7 +576,7 @@ Follow Arcium Hello World lifecycle ([docs](https://docs.arcium.com/developers/h
 - If full formula is too heavy, compute per-party siloed outside MPC and only run **combined bucket net** inside MPC — still valuable for the two-party privacy claim; document the split.
 - Output must stay compact (Solana callback size limits).
 
-### Enclave (`enclave/Luthren-enclave`) — Rust
+### Enclave (`enclave/obligor-enclave`) — Rust
 
 1. Hello-world day 1–2: accept two sealed inputs (bytes), compute `siloedIm` sum of two fixed arrays, return result + attestation.
 2. Production-shaped: deserialize fixed-N leg arrays for A and B; run `two_party_netted` mirroring `packages/margin` in i64 fixed-point; return `NetMarginResult` fields + attestation quote.
@@ -652,7 +652,7 @@ NEXT_PUBLIC_DEFAULT_CHAIN=solana
 
 ## 10. UX Flow
 
-1. **Landing** — Near-black full bleed. Serif wordmark “Luthren”. One sentence: *two parties, one net margin, neither sees the other’s book — MPC on Solana, attested TEE on Monad.* CTAs: `Connect` (Privy), `Run two-agent demo`, chain pill `Solana | Monad`.
+1. **Landing** — Near-black full bleed. Serif wordmark “obligor”. One sentence: *two parties, one net margin, neither sees the other’s book — MPC on Solana, attested TEE on Monad.* CTAs: `Connect` (Privy), `Run two-agent demo`, chain pill `Solana | Monad`.
 2. **Party setup** — Assign Party A and Party B wallets (connect + paste counterparty, or load two-party judge fixture). Label which is mainnet-RO live vs fixture. Backend badge: `Arcium MPC` or `TEE (Nitro/Oyster)`.
 3. **Per-party books** — Two columns. Each shows that party’s legs only. Never show B’s legs inside A’s column in confidential mode.
 4. **Siloed vs netted hero** — Show **siloed A**, **siloed B**, **siloed combined**, **netted combined**, **savings**. Amber accent on savings delta. Trust-model chip under savings.
@@ -798,7 +798,7 @@ Imperative. Follow in order. **Two-party everywhere. Pluggable backend everywher
 12. **Write** `scripts/verify-x402-networks.ts` — GET Solana + Monad facilitator `/supported`; print pass/fail; set documented env flags. **Do not** enable Monad x402 without a pass.
 13. **Wire** x402 V2 exact scheme for Solana per [Solana x402 guide](https://solana.com/docs/payments/agentic-payments/x402). Conditionally wire Monad per [Monad x402 guide](https://docs.monad.xyz/guides/x402) only after verify.
 14. **Init** Arcium project with `arcium init`; implement `two_party_portfolio_net` mirroring margin formula in fixed-point; wire `ArciumBackend`; on error fall back to `SimulatedBackend` with UI banner.
-15. **Implement** `enclave/Luthren-enclave` in **Rust**; wire `EnclaveBackend` with attestation fields; UI badge must say TEE / attested, never MPC.
+15. **Implement** `enclave/obligor-enclave` in **Rust**; wire `EnclaveBackend` with attestation fields; UI badge must say TEE / attested, never MPC.
 16. **Implement** parallel orchestrator: accept ≥3 `DeskPair`s; run enclave nets concurrently; return `ParallelEpochResult`.
 17. **Build** adversarial screen calling `/v1/demo/adversarial-plaintext` only after explicit DANGEROUS confirm — shared across chains.
 18. **Write** `scripts/demo-agent-a.ts` and `scripts/demo-agent-b.ts` (Solana, independent keys). Optional `demo-agent-monad.ts` if x402 Monad enabled.
@@ -840,12 +840,12 @@ Imperative. Follow in order. **Two-party everywhere. Pluggable backend everywher
 
 ## 17. Disappear Test
 
-If **two-party confidential netting** (two mutually distrusting parties submitting sealed/encrypted books into a joint computation that reveals only combined net margin) is removed, Luthren dies.
+If **two-party confidential netting** (two mutually distrusting parties submitting sealed/encrypted books into a joint computation that reveals only combined net margin) is removed, obligor dies.
 
-- Single-wallet self-netting without confidential compute is a spreadsheet — not Luthren.
-- A portfolio dashboard of one user’s legs is not Luthren.
+- Single-wallet self-netting without confidential compute is a spreadsheet — not obligor.
+- A portfolio dashboard of one user’s legs is not obligor.
 - x402 without two-party netting is a paid API facade.
-- A new perp DEX or dark pool is out of scope and not Luthren.
+- A new perp DEX or dark pool is out of scope and not obligor.
 - If Arcium is temporarily replaced by a **labeled** simulation of the **same two-party formula**, the Solana product is wounded but still demoable for Colosseum.
 - If the Monad path cannot show **attested TEE** and **≥3 parallel pairs**, it is a costume port — do not submit Monad; protect Colosseum.
 - If README or pitch **equates TEE with MPC**, honesty is broken — fix before submit.
@@ -858,7 +858,7 @@ If **two-party confidential netting** (two mutually distrusting parties submitti
 
 | Decision | Value |
 | --- | --- |
-| Product name | **Luthren** |
+| Product name | **obligor** |
 | Core thesis | Two-party / cross-counterparty netting (NOT single-wallet self-netting) |
 | Architecture | **Pluggable `ConfidentialBackend`** — formula shared; trust transport per chain |
 | Solana backend | **Arcium MXE** — cryptographic MPC (primary Colosseum) |

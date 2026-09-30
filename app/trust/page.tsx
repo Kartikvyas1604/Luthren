@@ -29,7 +29,7 @@ export default function TrustPage() {
             What is real, what is labeled
           </h1>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-            Luthren&rsquo;s product claim is two-party confidentiality: both desks seal inputs, only
+            Obligor&rsquo;s product claim is two-party confidentiality: both desks seal inputs, only
             the combined net margin leaves the computation. This frontend demo runs that exact
             formula in your browser on labeled fixtures — the confidential backends live in the
             repo, not in this window.
@@ -43,7 +43,7 @@ export default function TrustPage() {
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               Arcium MXE computes the net over encrypted inputs. No single operator — including
-              Luthren — can read either book. This is the primary Colosseum path.
+              Obligor — can read either book. This is the primary Colosseum path.
             </p>
           </div>
           <div className="rounded-lg border border-border bg-card p-6">

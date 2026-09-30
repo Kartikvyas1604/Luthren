@@ -20,7 +20,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Luthren — Confidential Two-Party Clearing",
+  title: "Obligor — Confidential Two-Party Clearing",
   description:
     "Two parties, one net margin, neither sees the other's book. MPC on Solana, attested TEE on Monad.",
 };

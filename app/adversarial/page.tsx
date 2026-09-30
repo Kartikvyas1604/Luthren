@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { AlertTriangle, ArrowLeft, ShieldAlert } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
@@ -9,6 +10,7 @@ import { adversarialBooks } from "@/lib/fixtures";
 import { twoPartyNetted, twoPartySiloed, usd } from "@/lib/margin";
 
 export default function AdversarialPage() {
+  const router = useRouter();
   const [confirmed, setConfirmed] = useState(false);
   const [secondsLeft, setSecondsLeft] = useState(20);
 
@@ -28,6 +30,12 @@ export default function AdversarialPage() {
   }, [confirmed, secondsLeft]);
 
   const expired = secondsLeft === 0;
+
+  useEffect(() => {
+    if (!confirmed || !expired) return;
+    const t = setTimeout(() => router.push("/clear"), 400);
+    return () => clearTimeout(t);
+  }, [confirmed, expired, router]);
 
   if (!confirmed) {
     return (
@@ -102,8 +110,8 @@ export default function AdversarialPage() {
         <section aria-label="What the operator could compute" className="rounded-lg border border-border bg-card p-6">
           <h2 className="text-sm font-medium">The operator&rsquo;s temptation</h2>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Combined siloed margin {usd(siloed.siloedCombined, 0)} collapses to{" "}
-            {usd(netted.nettedCombinedUsd, 0)} netted ({usd(netted.savingsUsd, 0)} freed) —{" "}
+            Combined siloed margin {usd(siloed.siloedCombined)} collapses to{" "}
+            {usd(netted.nettedCombinedUsd)} netted ({usd(netted.savingsUsd)} freed) —{" "}
             <span className="text-foreground">
               but the operator needed both books in plaintext to compute it.
             </span>{" "}

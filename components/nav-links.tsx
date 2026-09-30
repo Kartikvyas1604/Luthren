@@ -14,7 +14,7 @@ export function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex items-center gap-1 sm:gap-2 text-sm">
+    <nav className="flex items-center gap-0.5 text-sm sm:gap-1.5">
       {LINKS.map(({ href, label }) => {
         const active = pathname === href;
         return (
@@ -22,7 +22,7 @@ export function NavLinks() {
             key={href}
             href={href}
             aria-current={active ? "page" : undefined}
-            className={`relative rounded-md px-3 py-2 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+            className={`relative rounded-md px-2 py-2.5 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:px-3 ${
               active
                 ? "text-foreground"
                 : "text-muted-foreground hover:text-foreground hover:bg-secondary"
@@ -31,7 +31,7 @@ export function NavLinks() {
             {label}
             <span
               aria-hidden
-              className={`absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-primary transition-opacity duration-200 ${
+              className={`absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-primary transition-opacity duration-200 sm:inset-x-3 ${
                 active ? "opacity-100" : "opacity-0"
               }`}
             />

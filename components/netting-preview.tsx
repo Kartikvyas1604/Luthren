@@ -1,9 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-
-const usd = (n: number) =>
-  n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+import { usd } from "@/lib/margin";
 
 const MAX = 150_000;
 
@@ -110,7 +108,7 @@ export function NettingPreview() {
           {usd(savings)}
         </p>
       </div>
-      <p className="mt-2 text-center font-mono text-[10px] text-muted-foreground/70">
+      <p className="mt-2 text-center font-mono text-[10px] text-muted-foreground">
         drag the sliders — offsetting books collapse
       </p>
     </div>

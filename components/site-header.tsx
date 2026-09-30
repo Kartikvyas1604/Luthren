@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { NavLinks } from "@/components/nav-links";
+import { LogoMark } from "@/components/logo-mark";
+import { WalletConnect } from "@/components/wallet-connect";
 
 export function SiteHeader({ chain = "solana" }: { chain?: "solana" | "monad" }) {
   return (
@@ -10,13 +12,20 @@ export function SiteHeader({ chain = "solana" }: { chain?: "solana" | "monad" })
           href="/"
           className="flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
-          <span className="font-serif text-xl font-medium tracking-tight gold-text">Luthren</span>
+          <LogoMark size={26} />
+          <span className="font-serif text-xl font-medium tracking-tight gold-text sm:hidden">
+            O
+          </span>
+          <span className="font-serif text-xl font-medium tracking-tight gold-text hidden sm:inline">
+            Obligor
+          </span>
           <span className="hidden text-xs text-muted-foreground border border-border rounded-full px-2.5 py-0.5 sm:inline">
             two-party clearing
           </span>
         </Link>
         <div className="flex items-center gap-2 sm:gap-3">
           <NavLinks />
+          <WalletConnect />
           <span
             className="ml-1 hidden items-center gap-2 rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground md:flex"
             aria-label={`Network: ${chain === "solana" ? "Solana devnet" : "Monad testnet"}`}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CheckCircle2, LoaderCircle } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { monadPairs } from "@/lib/fixtures";
@@ -12,6 +12,12 @@ export default function MonadPage() {
   const [epoch, setEpoch] = useState<"idle" | "running" | "done">("idle");
   const [stage, setStage] = useState(-1);
   const [concurrency, setConcurrency] = useState(0);
+  const timersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+
+  useEffect(() => {
+    const timers = timersRef.current;
+    return () => timers.forEach(clearTimeout);
+  }, []);
 
   const results = useMemo(
     () =>
@@ -25,14 +31,22 @@ export default function MonadPage() {
   );
 
   function computeEpoch() {
+    timersRef.current.forEach(clearTimeout);
+    timersRef.current = [];
     setEpoch("running");
     setStage(0);
     setConcurrency(0);
-    EPOCH_STAGES.forEach((_, i) => setTimeout(() => setStage(i), i * 600));
-    monadPairs.forEach((_, i) =>
-      setTimeout(() => setConcurrency((c) => Math.max(c, i + 1)), 2400 + i * 400),
+    EPOCH_STAGES.forEach((_, i) =>
+      timersRef.current.push(setTimeout(() => setStage(i), i * 600)),
     );
-    setTimeout(() => setEpoch("done"), 2400 + monadPairs.length * 400 + 300);
+    monadPairs.forEach((_, i) =>
+      timersRef.current.push(
+        setTimeout(() => setConcurrency((c) => Math.max(c, i + 1)), 2400 + i * 400),
+      ),
+    );
+    timersRef.current.push(
+      setTimeout(() => setEpoch("done"), 2400 + monadPairs.length * 400 + 300),
+    );
   }
 
   return (
@@ -110,7 +124,7 @@ export default function MonadPage() {
             return (
               <article
                 key={r.pairId}
-                className={`anim-fade-up rounded-xl border bg-card p-5 transition-all duration-300 ${
+                className={`anim-fade-up rounded-xl border bg-card p-5 transition-[border-color,box-shadow,opacity] duration-300 ease-out ${
                   cleared
                     ? "border-primary/40 shadow-[0_0_30px_rgba(229,184,75,0.07)]"
                     : "border-border opacity-60"
@@ -121,7 +135,7 @@ export default function MonadPage() {
                 <header className="flex items-center justify-between gap-2">
                   <h2 className="text-sm font-medium">{r.label}</h2>
                   <span
-                    className={`rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase transition-all duration-300 ${
+                    className={`rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase transition-[border-color,color] duration-300 ${
                       cleared
                         ? "anim-flip border-primary/40 text-primary"
                         : "border-border text-muted-foreground"
@@ -133,7 +147,7 @@ export default function MonadPage() {
                 <dl className="mt-4 space-y-2">
                   <div className="flex items-baseline justify-between">
                     <dt className="text-xs text-muted-foreground">Siloed combined</dt>
-                    <dd className="font-mono text-sm tabular-nums">{usd(r.siloed, 0)}</dd>
+                    <dd className="font-mono text-sm tabular-nums">{usd(r.siloed)}</dd>
                   </div>
                   <div className="flex items-baseline justify-between">
                     <dt className="text-xs text-muted-foreground">Netted</dt>
@@ -142,7 +156,7 @@ export default function MonadPage() {
                         cleared ? "text-primary" : "text-muted-foreground"
                       }`}
                     >
-                      {cleared ? usd(r.net.nettedCombinedUsd, 0) : "——"}
+                      {cleared ? usd(r.net.nettedCombinedUsd) : "——"}
                     </dd>
                   </div>
                   <div className="flex items-baseline justify-between">
@@ -152,7 +166,7 @@ export default function MonadPage() {
                         cleared ? "text-success" : "text-muted-foreground"
                       }`}
                     >
-                      {cleared ? usd(r.net.savingsUsd, 0) : "——"}
+                      {cleared ? usd(r.net.savingsUsd) : "——"}
                     </dd>
                   </div>
                 </dl>

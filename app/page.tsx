@@ -33,7 +33,7 @@ export default function Home() {
                 <span className="gold-text italic">neither sees the other&rsquo;s book.</span>
               </h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-                Luthren nets distinct desks&rsquo; DeFi positions against each other under MPC on
+                Obligor nets distinct desks&rsquo; DeFi positions against each other under MPC on
                 Solana and attested TEE on Monad — offsetting collateral frees up without anyone,
                 including the operator, reading the full book.
               </p>
@@ -63,7 +63,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section aria-label="How Luthren works" className="border-b border-border">
+        <section aria-label="How Obligor works" className="border-b border-border">
           <div className="mx-auto max-w-7xl px-4 py-16 md:px-6 lg:px-8">
             <RevealSection>
               <h2 className="font-serif text-2xl font-medium tracking-tight md:text-3xl">
@@ -96,13 +96,13 @@ export default function Home() {
                 },
               ].map(({ icon: Icon, title, body, tag }, i) => (
                 <RevealSection key={title} delay={i * 80}>
-                  <article className="group h-full rounded-xl border border-border bg-card p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)] focus-within:border-primary/50">
+                  <article className="group h-full rounded-xl border border-border bg-card p-6 transition-[transform,border-color,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)] focus-within:border-primary/50">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-secondary transition-colors duration-200 group-hover:border-primary/40">
                       <Icon className="h-5 w-5 text-primary" aria-hidden />
                     </div>
                     <h3 className="mt-5 text-lg font-medium">{title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{body}</p>
-                    <p className="mt-4 font-mono text-xs text-muted-foreground/80 transition-colors duration-200 group-hover:text-muted-foreground">
+                    <p className="mt-4 font-mono text-xs text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
                       {tag}
                     </p>
                   </article>
@@ -152,7 +152,7 @@ export default function Home() {
               <RevealSection key={step} delay={i * 70}>
                 <Link
                   href={href}
-                  className="group relative block h-full rounded-xl border border-border bg-card p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="group relative block h-full rounded-xl border border-border bg-card p-5 transition-[transform,border-color] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-xs text-muted-foreground">{step}</span>

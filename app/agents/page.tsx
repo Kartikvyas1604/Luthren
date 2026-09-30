@@ -32,15 +32,14 @@ function AgentTerminal({
   lines,
   running,
   onRun,
-  disabled,
 }: {
   title: string;
   lines: Line[];
   running: boolean;
   onRun: () => void;
-  disabled: boolean;
 }) {
   const [visible, setVisible] = useState(0);
+  const done = visible >= lines.length;
 
   useEffect(() => {
     if (!running || visible >= lines.length) return;
@@ -67,10 +66,10 @@ function AgentTerminal({
         <button
           type="button"
           onClick={run}
-          disabled={disabled}
-          className="inline-flex h-10 items-center rounded-md border border-border px-3 text-xs transition-colors duration-100 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+          disabled={running && !done}
+          className="inline-flex h-10 items-center rounded-md border border-border px-3 text-xs transition-colors duration-100 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50 disabled:pointer-events-none"
         >
-          {running ? "Running…" : "Run agent"}
+          {running && !done ? "Running…" : done ? "Run again" : "Run agent"}
         </button>
       </header>
       <div className="min-h-[13rem] p-4 font-mono text-xs leading-6" aria-live="polite" aria-busy={running}>
@@ -129,14 +128,12 @@ export default function AgentsPage() {
             lines={AGENT_A_LINES}
             running={aRunning}
             onRun={() => setARunning(true)}
-            disabled={aRunning}
           />
           <AgentTerminal
             title="demo-agent-b"
             lines={AGENT_B_LINES}
             running={bRunning}
             onRun={() => setBRunning(true)}
-            disabled={bRunning}
           />
         </div>
 

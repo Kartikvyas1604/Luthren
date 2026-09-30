@@ -35,6 +35,21 @@ function CopyAddress({ address }: { address: string }) {
   );
 }
 
+function ExplorerLink({ address }: { address: string }) {
+  return (
+    <a
+      href={`https://explorer.solana.com/address/${address}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={`View ${address} on Solana Explorer`}
+      className="underline-offset-4 transition-colors duration-100 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      aria-label={`View address ${truncateAddress(address)} on Solana Explorer, opens in new tab`}
+    >
+      {truncateAddress(address)}
+    </a>
+  );
+}
+
 function LegRow({ leg, index }: { leg: PositionLeg; index: number }) {
   const negative = leg.signedExposureUsd < 0;
   return (
@@ -63,7 +78,7 @@ function LegRow({ leg, index }: { leg: PositionLeg; index: number }) {
         className={`font-mono text-sm tabular-nums ${negative ? "text-destructive" : "text-foreground"}`}
       >
         {negative ? "−" : "+"}
-        {usd(Math.abs(leg.notionalUsd), 0)}
+        {usd(Math.abs(leg.notionalUsd))}
       </p>
     </li>
   );
@@ -95,7 +110,7 @@ export function BookColumn({
         </p>
         <div className="mt-4 space-y-2" aria-hidden>
           {[0, 1, 2].map((i) => (
-            <div key={i} className="h-4 rounded bg-muted animate-pulse" />
+            <div key={i} className="h-4 rounded bg-muted animate-pulse motion-reduce:animate-none" />
           ))}
         </div>
       </div>
@@ -108,7 +123,7 @@ export function BookColumn({
         <div className="flex items-center justify-between gap-2">
           <h3 className="text-sm font-medium">{title}</h3>
           <div className="flex items-center gap-1 font-mono text-xs text-muted-foreground tabular-nums">
-            {truncateAddress(wallet)}
+            <ExplorerLink address={wallet} />
             <CopyAddress address={wallet} />
           </div>
         </div>
@@ -129,7 +144,7 @@ export function BookColumn({
       )}
       <div className="flex items-baseline justify-between border-t border-border bg-secondary/30 px-4 py-3 transition-colors duration-150">
         <p className="text-xs text-muted-foreground">Siloed initial margin</p>
-        <p className="font-mono text-sm font-medium tabular-nums">{usd(im, 0)}</p>
+        <p className="font-mono text-sm font-medium tabular-nums">{usd(im)}</p>
       </div>
     </div>
   );
