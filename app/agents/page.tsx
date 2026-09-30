@@ -6,25 +6,25 @@ import { PageShell } from "@/components/page-shell";
 type Line = { text: string; cls?: string };
 
 const AGENT_A_LINES: Line[] = [
-  { text: "$ pnpm demo:agent-a", cls: "text-foreground" },
-  { text: "→ key: disposable agent key A (devnet, spend-cap 1 USDC)", cls: "text-muted-foreground" },
-  { text: "→ POST http://localhost:4021/v1/net-margin", cls: "text-muted-foreground" },
-  { text: "← 402 PAYMENT-REQUIRED", cls: "text-destructive" },
-  { text: "→ scheme exact · network solana:EtWT...qa1 · $0.01", cls: "text-muted-foreground" },
-  { text: "→ paying 10_000 USDC base units", cls: "text-muted-foreground" },
-  { text: "← 200 · nettedCombinedUsd 7,200.00 · trustModel cryptographic_mpc", cls: "text-primary" },
-  { text: "← (legs omitted — aggregate summary only)", cls: "text-muted-foreground" },
+  { text: "$ pnpm demo:agent-a", cls: "t-line" },
+  { text: "→ key: disposable agent key A (devnet, spend-cap 1 USDC)", cls: "t-muted" },
+  { text: "→ POST http://localhost:4021/v1/net-margin", cls: "t-muted" },
+  { text: "← 402 PAYMENT-REQUIRED", cls: "t-err" },
+  { text: "→ scheme exact · network solana:EtWT...qa1 · $0.01", cls: "t-muted" },
+  { text: "→ paying 10_000 USDC base units", cls: "t-muted" },
+  { text: "← 200 · nettedCombinedUsd 7,200.00 · trustModel cryptographic_mpc", cls: "t-ok" },
+  { text: "← (legs omitted — aggregate summary only)", cls: "t-muted" },
 ];
 
 const AGENT_B_LINES: Line[] = [
-  { text: "$ pnpm demo:agent-b", cls: "text-foreground" },
-  { text: "→ key: independent disposable key B", cls: "text-muted-foreground" },
-  { text: "→ POST http://localhost:4021/v1/net-margin", cls: "text-muted-foreground" },
-  { text: "← 402 PAYMENT-REQUIRED", cls: "text-destructive" },
-  { text: "→ scheme exact · network solana:EtWT...qa1 · $0.01", cls: "text-muted-foreground" },
-  { text: "→ paying 10_000 USDC base units", cls: "text-muted-foreground" },
-  { text: "← 200 · savingsUsd 11,300.00 · backend arcium", cls: "text-primary" },
-  { text: "← (legs omitted — aggregate summary only)", cls: "text-muted-foreground" },
+  { text: "$ pnpm demo:agent-b", cls: "t-line" },
+  { text: "→ key: independent disposable key B", cls: "t-muted" },
+  { text: "→ POST http://localhost:4021/v1/net-margin", cls: "t-muted" },
+  { text: "← 402 PAYMENT-REQUIRED", cls: "t-err" },
+  { text: "→ scheme exact · network solana:EtWT...qa1 · $0.01", cls: "t-muted" },
+  { text: "→ paying 10_000 USDC base units", cls: "t-muted" },
+  { text: "← 200 · savingsUsd 11,300.00 · backend arcium", cls: "t-ok" },
+  { text: "← (legs omitted — aggregate summary only)", cls: "t-muted" },
 ];
 
 function AgentTerminal({
@@ -54,7 +54,7 @@ function AgentTerminal({
   }
 
   return (
-    <section className="overflow-hidden rounded-lg border border-border bg-[#121a1c]">
+    <section className="overflow-hidden rounded-lg border border-border terminal">
       <header className="flex items-center justify-between border-b border-border px-4 py-3">
         <div className="flex items-center gap-3">
           <span className="flex gap-1.5" aria-hidden>

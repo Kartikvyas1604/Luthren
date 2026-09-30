@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function SiteHeader({ chain = "solana" }: { chain?: "solana" | "monad" }) {
   return (
@@ -36,12 +37,13 @@ export function SiteHeader({ chain = "solana" }: { chain?: "solana" | "monad" })
             Trust
           </Link>
           <span
-            className="ml-2 flex items-center gap-2 rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground"
+            className="ml-2 hidden items-center gap-2 rounded-full border border-border px-3 py-1 font-mono text-xs text-muted-foreground sm:flex"
             aria-label={`Network: ${chain === "solana" ? "Solana devnet" : "Monad testnet"}`}
           >
-            <span className={`h-2 w-2 rounded-full ${chain === "solana" ? "bg-primary" : "bg-slate-400"}`} aria-hidden />
+            <span className={`h-2 w-2 rounded-full ${chain === "solana" ? "bg-primary" : "bg-slate-400 dark:bg-slate-500"}`} aria-hidden />
             {chain === "solana" ? "devnet" : "testnet"}
           </span>
+          <ThemeToggle />
         </nav>
       </div>
     </header>

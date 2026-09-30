@@ -47,7 +47,7 @@ export default function TrustPage() {
             </p>
           </div>
           <div className="rounded-lg border border-border bg-card p-6">
-            <h2 className="font-mono text-xs uppercase tracking-widest font-mono text-slate-300">
+            <h2 className="font-mono text-xs uppercase tracking-widest text-slate-600 dark:text-slate-300">
               Monad — hardware-attested TEE
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
