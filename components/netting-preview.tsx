@@ -102,9 +102,9 @@ export function NettingPreview() {
         </div>
       </div>
 
-      <div className="mt-4 flex items-baseline justify-between rounded-lg border border-primary/40 bg-accent px-3 py-2.5">
+      <div className="mt-4 flex items-baseline justify-between rounded-lg border border-success/30 bg-secondary px-3 py-2.5">
         <p className="text-xs text-muted-foreground">Capital freed</p>
-        <p className="font-mono text-sm font-medium tabular-nums text-primary">
+        <p className="font-mono text-sm font-medium tabular-nums text-success">
           {usd(savings)}
         </p>
       </div>

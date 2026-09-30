@@ -240,7 +240,7 @@ export default function ClearPage() {
               </span>
             </p>
             <div className="mt-4 h-1 overflow-hidden rounded-full bg-secondary" aria-hidden>
-              <div className="anim-shimmer h-full w-full rounded-full bg-gradient-to-r from-transparent via-primary to-transparent" />
+              <div className="anim-shimmer h-full w-full rounded-full bg-gradient-to-r from-transparent via-foreground/70 to-transparent" />
             </div>
             <ol className="mt-4 space-y-2">
               {STAGES.map((s, i) => (

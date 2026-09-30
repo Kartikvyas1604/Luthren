@@ -6,26 +6,26 @@ _Status: active_
 
 Obligor is confidential two-party clearing for trading desks. Voice: precise, calm, honest. Short declarative sentences. Numbers do the persuading; no hype, no gradient hero copy. We name tradeoffs aloud ("TEE ≠ MPC"). Never overclaim.
 
-## Palette — "Spectral" (launch-grade, #131316 base)
+## Palette — "Monochrome" (launch-grade, #131316 base)
 
-Locked base: near-black #131316. Accent: refined indigo — institutional, Linear/Stripe-tier, market-launch ready. Light mode = neutral gray-white. Restraint discipline retained from the Phantom pass: no gradient text, no glow shadows, no sheen.
+Locked base: near-black #131316, pure white text. Light theme is the exact reverse: near-white #FAFAFA base, #131316 text. No brand accent color at all — white-on-black (and black-on-white) CTAs carry the interface. Color appears only where it carries meaning: green = success/savings, red = destructive, neutral gray = TEE/secondary. Focus rings follow the theme foreground with background-matched offset. Discipline: no gradient text, no glow shadows, no sheen, no colored borders except semantic.
 
-| Token | Light value | Dark value |
+| Token | Light (reversed) | Dark (locked base) |
 | --- | --- | --- |
-| background | #F7F7FA | **#131316** (locked) |
+| background | #FAFAFA | **#131316** |
 | surface (card) | #FFFFFF | #19191D |
 | popover | #FFFFFF | #1E1E23 |
-| foreground | #1B1B1F | #F2F2F5 |
-| muted-foreground | #6B6B74 | #9B9BA3 |
-| border | #E5E5EA | #26262B |
-| **primary (indigo)** | #5244C9 (AA on white) | #7A6FF0 |
-| primary-foreground | #F8F8FC | #131316 |
-| ring | #5244C9 | #7A6FF0 |
-| success | #0F8A5F | #4CC38A |
-| steel (TEE marker) | #5F7D9C | #8FA3BF |
-| destructive | #D6455C | #E05E6E |
+| foreground | #131316 | #FFFFFF |
+| muted-foreground | #6B6B74 | #A1A1AA |
+| border | #E4E4E7 | #27272A |
+| **primary (CTA)** | #131316 (black button) | #FFFFFF (white button) |
+| primary-foreground | #FAFAFA | #131316 |
+| ring | #131316 | #FFFFFF |
+| success | #079455 | #3FB950 |
+| steel (TEE marker) | #6F7C88 | #8A95A1 |
+| destructive | #D92D20 | #F04438 |
 
-Rule: indigo is the sole accent — CTAs, focus rings, active-nav underline, trust chips, headline accent. Everything else neutral monochrome. Green = semantic success/savings. Steel = attested-TEE markers. Red = destructive/leak. No gradient text, no glow shadows, no sheen — the product reads like serious financial software.
+Rule: the interface is monochrome; motion and typography do the branding. Green/red/gray are semantic only — never decorative.
 
 ## Typography
 
