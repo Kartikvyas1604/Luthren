@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 72" width="236" height="72" role="img" aria-label="Obligor">
+  <style>
+    .word { fill: #211D16; }
+    @media (prefers-color-scheme: dark) {
+      .word { fill: #F2EFE8; }
+    }
+  </style>
+  <rect x="0" y="26" width="30" height="10" rx="5" fill="#E5B84B"/>
+  <rect x="7" y="40" width="30" height="10" rx="5" fill="#9FB6C4"/>
+  <text x="48" y="50" font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="46" class="word">Obligor</text>
+</svg>

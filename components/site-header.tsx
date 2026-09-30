@@ -12,7 +12,7 @@ export function SiteHeader({ chain = "solana" }: { chain?: "solana" | "monad" })
           href="/"
           className="flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
-          <LogoMark size={26} />
+          <LogoMark size={26} className="translate-y-0.5" />
           <span className="font-serif text-xl font-medium tracking-tight gold-text sm:hidden">
             O
           </span>
