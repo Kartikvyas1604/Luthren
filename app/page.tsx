@@ -30,7 +30,7 @@ export default function Home() {
               </p>
               <h1 className="mt-5 max-w-2xl font-serif text-4xl font-medium leading-[1.08] tracking-tight md:text-6xl">
                 Two parties, one net margin,{" "}
-                <span className="text-primary italic">neither sees the other&rsquo;s book.</span>
+                <span className="gold-text italic">neither sees the other&rsquo;s book.</span>
               </h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
                 Luthren nets distinct desks&rsquo; DeFi positions against each other under MPC on
@@ -40,7 +40,7 @@ export default function Home() {
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <Link
                   href="/clear"
-                  className="btn-press inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-medium text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="sheen btn-press inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-medium text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   Run the clearing demo
                   <ArrowRight className="h-4 w-4" aria-hidden />

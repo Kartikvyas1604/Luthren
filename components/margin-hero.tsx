@@ -49,7 +49,7 @@ export function MarginHero({
   return (
     <section
       aria-label="Two-party margin result"
-      className="anim-fade-up rounded-xl border border-primary/40 bg-card p-6 shadow-[0_0_40px_rgba(112,224,0,0.08)] md:p-8"
+      className="anim-fade-up rounded-xl border border-primary/40 bg-card p-6 shadow-[0_0_40px_rgba(229,184,75,0.08)] md:p-8"
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>

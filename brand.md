@@ -6,27 +6,26 @@ _Status: active_
 
 Luthren is confidential two-party clearing for trading desks. Voice: precise, calm, honest. Short declarative sentences. Numbers do the persuading; no hype, no gradient hero copy. We name tradeoffs aloud ("TEE ≠ MPC"). Never overclaim.
 
-## Palette — "Verdant Slate" (Coolors user palette)
+## Palette — "Bullion" (gold on ink)
 
-User-specified palette: `#006400 · #008000 · #70E000 · #EDF2F4 · #9BACB6 · #394A4D`.
-Dark-first. Deep slate-teal surfaces derived from #394A4D, near-white #EDF2F4 text, single bright green #70E000 accent. No yellow, gold, or amber anywhere (hard user rule).
+Design-owner's choice. Institutional wealth aesthetic: deep neutral ink, warm off-white text, single champagne-gold accent, silver-steel reserved for the TEE distinction. Light mode = warm paper.
 
 | Token | Light value | Dark value |
 | --- | --- | --- |
-| background | #EDF2F4 (palette off-white) | #0F1618 (darkened #394A4D) |
-| surface (card) | #FFFFFF | #172023 |
-| popover | #FFFFFF | #1C2629 |
-| foreground | #394A4D | #EDF2F4 |
-| muted-foreground | #4E5F63 (AA-darkened #9BACB6) | #9BACB6 |
-| border | #D4DDE0 | #2A3539 |
-| **primary (green)** | #006400 (AA on white) | #70E000 |
-| primary-foreground | #EDF2F4 | #0F1618 |
-| ring | #006400 | #70E000 |
-| destructive | #C44A3E | #E05E52 |
-| success | #008000 | #70E000 |
-| TEE/secondary marker | muted gray | #9BACB6 (slate) |
+| background | #F6F4EF (warm paper) | #0A0B0D (ink) |
+| surface (card) | #FFFFFF | #131417 |
+| popover | #FFFFFF | #17181C |
+| foreground | #211D16 | #F2EFE8 (warm white) |
+| muted-foreground | #5D5648 | #A8A296 (warm gray) |
+| border | #E3DDD0 | #26262B |
+| **primary (gold)** | #8A6A1F (AA on white) | #E5B84B |
+| primary-foreground | #FDFCF8 | #0A0B0D |
+| ring | #8A6A1F | #E5B84B |
+| success | #7A6420 | #E5B84B |
+| steel (TEE marker) | #5C6F7A | #9FB6C4 |
+| destructive | #B54236 | #E05E52 |
 
-Rule: bright green #70E000 is the accent — CTAs, focus rings, trust chips, savings numbers. #9BACB6 slate marks the Monad TEE distinction. Red = destructive/leak. Muted text never lighter than #9BACB6 on dark.
+Rule: gold is the accent — CTAs (with hover sheen sweep), focus rings, savings numbers, the gold-text gradient wordmark and headline accent (italic serif). Steel = attested-TEE markers only. Red = destructive/leak. Never use a second warm accent.
 
 ## Typography
 

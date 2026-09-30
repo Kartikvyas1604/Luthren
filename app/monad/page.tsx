@@ -40,7 +40,7 @@ export default function MonadPage() {
       <div className="flex flex-col gap-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-slate-600 dark:text-slate-300">
+            <p className="font-mono text-xs uppercase tracking-widest text-steel">
               Monad · parallel multi-pair clearing
             </p>
             <h1 className="mt-2 font-serif text-3xl font-medium tracking-tight md:text-4xl">
@@ -51,8 +51,8 @@ export default function MonadPage() {
               as the Solana path, attested TEE trust model — TEE ≠ MPC.
             </p>
           </div>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-400/40 px-2.5 py-1 font-mono text-xs text-slate-600 dark:text-slate-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-slate-500 dark:bg-slate-400" aria-hidden />
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-steel/40 px-2.5 py-1 font-mono text-xs text-steel">
+            <span className="h-1.5 w-1.5 rounded-full bg-steel" aria-hidden />
             TEE attested · fixture books
           </span>
         </div>
@@ -68,7 +68,7 @@ export default function MonadPage() {
         )}
 
         {epoch === "running" && (
-          <section aria-label="Epoch progress" aria-busy="true" className="anim-fade-up rounded-xl border border-slate-400/30 bg-card p-6">
+          <section aria-label="Epoch progress" aria-busy="true" className="anim-fade-up rounded-xl border border-steel/30 bg-card p-6">
             <p className="flex items-center gap-2 text-sm font-medium">
               <LoaderCircle className="h-4 w-4 animate-spin text-primary motion-reduce:animate-none" aria-hidden />
               Clearing epoch in progress
@@ -112,7 +112,7 @@ export default function MonadPage() {
                 key={r.pairId}
                 className={`anim-fade-up rounded-xl border bg-card p-5 transition-all duration-300 ${
                   cleared
-                    ? "border-primary/40 shadow-[0_0_30px_rgba(112,224,0,0.07)]"
+                    ? "border-primary/40 shadow-[0_0_30px_rgba(229,184,75,0.07)]"
                     : "border-border opacity-60"
                 }`}
                 style={{ animationDelay: `${i * 80}ms` }}
