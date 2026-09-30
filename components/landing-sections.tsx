@@ -130,7 +130,7 @@ export function CtaBand() {
     <section className="relative overflow-hidden border-t border-border">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_50%_100%,var(--accent),transparent)] opacity-60"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_50%_100%,var(--accent),transparent)] opacity-25"
       />
       <div className="relative mx-auto max-w-7xl px-4 py-16 text-center md:px-6 lg:px-8">
         <h2 className="font-serif text-2xl font-medium tracking-tight md:text-4xl">

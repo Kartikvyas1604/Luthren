@@ -31,25 +31,25 @@
 .dark {
   color-scheme: dark;
   --background: #131316;
-  --foreground: #ffffff;
+  --foreground: #eaeaec;
   --card: #19191d;
-  --card-foreground: #ffffff;
+  --card-foreground: #eaeaec;
   --popover: #1e1e23;
-  --popover-foreground: #ffffff;
-  --primary: #ffffff;
+  --popover-foreground: #eaeaec;
+  --primary: #eaeaec;
   --primary-foreground: #131316;
   --secondary: #212126;
-  --secondary-foreground: #ffffff;
+  --secondary-foreground: #eaeaec;
   --muted: #212126;
   --muted-foreground: #a1a1aa;
   --accent: #1f1f24;
-  --accent-foreground: #ffffff;
+  --accent-foreground: #eaeaec;
   --destructive: #f04438;
   --destructive-foreground: #131316;
   --success: #3fb950;
   --border: #27272a;
   --input: #27272a;
-  --ring: #ffffff;
+  --ring: #eaeaec;
   --steel: #8a95a1;
 }
 
@@ -91,11 +91,11 @@ body {
 }
 
 .terminal {
-  background: #121a1c;
-  color: #edf2f4;
+  background: #16161a;
+  color: #e4e4e7;
 }
 .terminal .t-line {
-  color: #edf2f4;
+  color: #e4e4e7;
 }
 .terminal .t-muted {
   color: #9bacb6;
@@ -113,7 +113,7 @@ body {
   }
   @keyframes flash-accent {
     0% {
-      color: var(--success);
+      color: color-mix(in srgb, var(--success) 70%, var(--foreground));
     }
     100% {
       color: var(--foreground);

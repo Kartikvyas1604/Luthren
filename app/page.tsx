@@ -18,7 +18,7 @@ export default function Home() {
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(ellipse_55%_40%_at_50%_-5%,var(--accent),transparent)] opacity-50"
+            className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(ellipse_55%_40%_at_50%_-5%,var(--accent),transparent)] opacity-25"
           />
           <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 pb-20 pt-16 md:px-6 md:pb-28 md:pt-24 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
             <div className="anim-fade-up">
