@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { NettingPreview } from "@/components/netting-preview";
 import { RevealSection } from "@/components/reveal-section";
+import { StatsBand, FaqSection, CtaBand } from "@/components/landing-sections";
 
 export default function Home() {
   return (
@@ -171,6 +172,9 @@ export default function Home() {
             ))}
           </div>
         </section>
+        <StatsBand />
+        <FaqSection />
+        <CtaBand />
       </main>
       <SiteFooter />
     </>

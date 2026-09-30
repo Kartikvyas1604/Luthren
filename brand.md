@@ -6,31 +6,31 @@ _Status: active_
 
 Obligor is confidential two-party clearing for trading desks. Voice: precise, calm, honest. Short declarative sentences. Numbers do the persuading; no hype, no gradient hero copy. We name tradeoffs aloud ("TEE ≠ MPC"). Never overclaim.
 
-## Palette — "Phantom Violet" (wallet-native)
+## Palette — "Spectral" (launch-grade, #131316 base)
 
-User-directed: Phantom wallet aesthetic. Neutral dark surfaces, single periwinkle-violet accent, cool steel reserved for TEE markers. Light mode = neutral gray-white.
+Locked base: near-black #131316. Accent: refined indigo — institutional, Linear/Stripe-tier, market-launch ready. Light mode = neutral gray-white. Restraint discipline retained from the Phantom pass: no gradient text, no glow shadows, no sheen.
 
 | Token | Light value | Dark value |
 | --- | --- | --- |
-| background | #F5F5F7 | #131316 (Phantom dark) |
-| surface (card) | #FFFFFF | #1B1B1F |
-| popover | #FFFFFF | #202024 |
-| foreground | #1C1C1E | #F3F2F7 |
-| muted-foreground | #67636F | #9C9AA7 |
-| border | #E2E2E7 | #2A2A30 |
-| **primary (violet)** | #6C4FE0 (AA on white) | #AB9FF2 (Phantom periwinkle) |
-| primary-foreground | #FDFCFE | #131316 |
-| ring | #6C4FE0 | #AB9FF2 |
-| success | #0F8A5F | #5ED39A |
+| background | #F7F7FA | **#131316** (locked) |
+| surface (card) | #FFFFFF | #19191D |
+| popover | #FFFFFF | #1E1E23 |
+| foreground | #1B1B1F | #F2F2F5 |
+| muted-foreground | #6B6B74 | #9B9BA3 |
+| border | #E5E5EA | #26262B |
+| **primary (indigo)** | #5244C9 (AA on white) | #7A6FF0 |
+| primary-foreground | #F8F8FC | #131316 |
+| ring | #5244C9 | #7A6FF0 |
+| success | #0F8A5F | #4CC38A |
 | steel (TEE marker) | #5F7D9C | #8FA3BF |
 | destructive | #D6455C | #E05E6E |
 
-Rule: violet is the sole accent, used with restraint — primary CTAs, focus rings, active-nav underline, small trust chips, and the italic headline accent (solid violet, no gradient). Everything else stays neutral monochrome. Green = semantic success/savings only. Steel = attested-TEE markers. Red = destructive/leak. No gradient text, no glow shadows, no sheen effects — the app should read like a serious wallet product, not a brand landing page. Wordmark is plain violet text.
+Rule: indigo is the sole accent — CTAs, focus rings, active-nav underline, trust chips, headline accent. Everything else neutral monochrome. Green = semantic success/savings. Steel = attested-TEE markers. Red = destructive/leak. No gradient text, no glow shadows, no sheen — the product reads like serious financial software.
 
-## Typography (user-directed)
+## Typography
 
-- **Headings:** Geist (`font-serif` token remapped to Geist var — display sans, tight tracking).
-- **Body/UI:** Inter (first in the list; neutral, wallet-native).
+- **Headings:** Geist (display sans, tight tracking).
+- **Body/UI:** Inter.
 - **Numbers/pricing only:** Geist Mono with `tabular-nums` — balances, margins, addresses.
 
 ## Typography

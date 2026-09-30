@@ -4,51 +4,51 @@
 
 :root {
   color-scheme: light;
-  --background: #f5f5f7;
-  --foreground: #1c1c1e;
+  --background: #f7f7fa;
+  --foreground: #1b1b1f;
   --card: #ffffff;
-  --card-foreground: #1c1c1e;
+  --card-foreground: #1b1b1f;
   --popover: #ffffff;
-  --popover-foreground: #1c1c1e;
-  --primary: #6c4fe0;
-  --primary-foreground: #fdfcfe;
-  --secondary: #edeef2;
-  --secondary-foreground: #1c1c1e;
-  --muted: #edeef2;
-  --muted-foreground: #67636f;
-  --accent: #ece9fb;
-  --accent-foreground: #6c4fe0;
+  --popover-foreground: #1b1b1f;
+  --primary: #5244c9;
+  --primary-foreground: #f8f8fc;
+  --secondary: #ececf1;
+  --secondary-foreground: #1b1b1f;
+  --muted: #ececf1;
+  --muted-foreground: #6b6b74;
+  --accent: #e9e7fb;
+  --accent-foreground: #5244c9;
   --destructive: #d6455c;
-  --destructive-foreground: #fdfcfe;
+  --destructive-foreground: #f8f8fc;
   --success: #0f8a5f;
-  --border: #e2e2e7;
-  --input: #e2e2e7;
-  --ring: #6c4fe0;
+  --border: #e5e5ea;
+  --input: #e5e5ea;
+  --ring: #5244c9;
   --steel: #5f7d9c;
 }
 
 .dark {
   color-scheme: dark;
   --background: #131316;
-  --foreground: #f3f2f7;
-  --card: #1b1b1f;
-  --card-foreground: #f3f2f7;
-  --popover: #202024;
-  --popover-foreground: #f3f2f7;
-  --primary: #ab9ff2;
+  --foreground: #f2f2f5;
+  --card: #19191d;
+  --card-foreground: #f2f2f5;
+  --popover: #1e1e23;
+  --popover-foreground: #f2f2f5;
+  --primary: #7a6ff0;
   --primary-foreground: #131316;
-  --secondary: #232328;
-  --secondary-foreground: #f3f2f7;
-  --muted: #232328;
-  --muted-foreground: #9c9aa7;
-  --accent: #2a2440;
-  --accent-foreground: #ab9ff2;
+  --secondary: #212126;
+  --secondary-foreground: #f2f2f5;
+  --muted: #212126;
+  --muted-foreground: #9b9ba3;
+  --accent: #1c1a33;
+  --accent-foreground: #7a6ff0;
   --destructive: #e05e6e;
   --destructive-foreground: #131316;
-  --success: #5ed39a;
-  --border: #2a2a30;
-  --input: #2a2a30;
-  --ring: #ab9ff2;
+  --success: #4cc38a;
+  --border: #26262b;
+  --input: #26262b;
+  --ring: #7a6ff0;
   --steel: #8fa3bf;
 }
 

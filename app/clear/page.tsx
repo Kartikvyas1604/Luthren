@@ -28,6 +28,30 @@ export default function ClearPage() {
   const [bookA, setBookA] = useState(solanaPartyA);
   const [bookB, setBookB] = useState(solanaPartyB);
 
+  const [walletAInput, setWalletAInput] = useState(solanaPartyA.wallet);
+  const [walletBInput, setWalletBInput] = useState(solanaPartyB.wallet);
+
+  const [errorA, setErrorA] = useState<string | null>(null);
+  const [errorB, setErrorB] = useState<string | null>(null);
+
+  function validateWallet(value: string): string | null {
+    const v = value.trim();
+    if (!v) return "Wallet address is required.";
+    if (v.length < 32 || v.length > 44) return "Solana addresses are 32–44 base58 characters.";
+    if (!/^[1-9A-HJ-NP-Za-km-z]+$/.test(v)) return "Address must be base58 (no 0, O, I, l).";
+    return null;
+  }
+
+  function applyWallets() {
+    const errA = validateWallet(walletAInput);
+    const errB = validateWallet(walletBInput);
+    setErrorA(errA);
+    setErrorB(errB);
+    if (errA || errB) return;
+    setBookA((b) => ({ ...b, wallet: walletAInput.trim() }));
+    setBookB((b) => ({ ...b, wallet: walletBInput.trim() }));
+  }
+
   useEffect(() => {
     const timers = timersRef.current;
     return () => timers.forEach(clearTimeout);
@@ -39,15 +63,25 @@ export default function ClearPage() {
   function loadFixture() {
     setBookA(solanaPartyA);
     setBookB(solanaPartyB);
+    setWalletAInput(solanaPartyA.wallet);
+    setWalletBInput(solanaPartyB.wallet);
+    setErrorA(null);
+    setErrorB(null);
   }
 
   function loadAdversarialFixture() {
     setBookA(adversarialBooks.a);
     setBookB(adversarialBooks.b);
+    setWalletAInput(adversarialBooks.a.wallet);
+    setWalletBInput(adversarialBooks.b.wallet);
+    setErrorA(null);
+    setErrorB(null);
   }
 
   function connectPartyA(address: string) {
     setBookA((b) => ({ ...b, wallet: address }));
+    setWalletAInput(address);
+    setErrorA(null);
   }
 
   function disconnectPartyA() {
@@ -96,38 +130,101 @@ export default function ClearPage() {
         </div>
 
         {phase === "setup" && (
-          <section aria-label="Party setup" className="flex flex-wrap items-center gap-3">
-            <WalletConnect
-              variant="block"
-              label="Connect Party A wallet"
-              onConnect={connectPartyA}
-              onDisconnect={disconnectPartyA}
-            />
-            <button
-              type="button"
-              onClick={loadFixture}
-              className="inline-flex h-10 items-center gap-2 rounded-md border border-border px-4 text-sm transition-colors duration-100 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <Wallet className="h-4 w-4" aria-hidden />
-              Load judge fixture
-            </button>
-            <button
-              type="button"
-              onClick={loadAdversarialFixture}
-              className="inline-flex h-10 items-center gap-2 rounded-md border border-border px-4 text-sm transition-colors duration-100 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <AlertTriangle className="h-4 w-4" aria-hidden />
-              Load offsetting fixture
-            </button>
-            <button
-              type="button"
-              disabled={busy}
-              onClick={compute}
-              className="inline-flex h-10 items-center gap-2 rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-opacity duration-100 hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50"
-            >
-              <Lock className="h-4 w-4" aria-hidden />
-              Compute two-party net margin
-            </button>
+          <section aria-label="Party setup" className="rounded-xl border border-border bg-card p-5 md:p-6">
+            <h2 className="text-sm font-medium">Session setup</h2>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Connect wallets, paste counterparties, or load the judge fixture — then compute.
+            </p>
+            <div className="mt-4 grid gap-4 md:grid-cols-2">
+              <div>
+                <label htmlFor="wallet-a" className="text-xs text-muted-foreground">
+                  Party A wallet (yours)
+                </label>
+                <input
+                  id="wallet-a"
+                  type="text"
+                  value={walletAInput}
+                  onChange={(e) => setWalletAInput(e.target.value)}
+                  placeholder="Base58 address — 32–44 chars"
+                  autoComplete="off"
+                  spellCheck={false}
+                  className={`mt-1.5 h-10 w-full rounded-md border bg-background px-3 font-mono text-sm transition-colors duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                    errorA ? "border-destructive" : "border-input"
+                  }`}
+                  aria-invalid={!!errorA}
+                  aria-describedby={errorA ? "wallet-a-error" : undefined}
+                />
+                {errorA && (
+                  <p id="wallet-a-error" className="mt-1.5 text-xs text-destructive" role="alert">
+                    {errorA}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label htmlFor="wallet-b" className="text-xs text-muted-foreground">
+                  Party B wallet (counterparty)
+                </label>
+                <input
+                  id="wallet-b"
+                  type="text"
+                  value={walletBInput}
+                  onChange={(e) => setWalletBInput(e.target.value)}
+                  placeholder="Base58 address — 32–44 chars"
+                  autoComplete="off"
+                  spellCheck={false}
+                  className={`mt-1.5 h-10 w-full rounded-md border bg-background px-3 font-mono text-sm transition-colors duration-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                    errorB ? "border-destructive" : "border-input"
+                  }`}
+                  aria-invalid={!!errorB}
+                  aria-describedby={errorB ? "wallet-b-error" : undefined}
+                />
+                {errorB && (
+                  <p id="wallet-b-error" className="mt-1.5 text-xs text-destructive" role="alert">
+                    {errorB}
+                  </p>
+                )}
+              </div>
+            </div>
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                onClick={applyWallets}
+                className="inline-flex h-10 items-center gap-2 rounded-md border border-border px-4 text-sm transition-colors duration-100 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <Wallet className="h-4 w-4" aria-hidden />
+                Assign wallets
+              </button>
+              <button
+                type="button"
+                onClick={loadFixture}
+                className="inline-flex h-10 items-center gap-2 rounded-md border border-border px-4 text-sm transition-colors duration-100 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                Load judge fixture
+              </button>
+              <button
+                type="button"
+                onClick={loadAdversarialFixture}
+                className="inline-flex h-10 items-center gap-2 rounded-md border border-border px-4 text-sm transition-colors duration-100 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <AlertTriangle className="h-4 w-4" aria-hidden />
+                Load offsetting fixture
+              </button>
+              <WalletConnect
+                variant="block"
+                label="Connect Party A wallet"
+                onConnect={connectPartyA}
+                onDisconnect={disconnectPartyA}
+              />
+              <button
+                type="button"
+                disabled={busy}
+                onClick={compute}
+                className="btn-press ml-auto inline-flex h-11 items-center gap-2 rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50"
+              >
+                <Lock className="h-4 w-4" aria-hidden />
+                Compute two-party net margin
+              </button>
+            </div>
           </section>
         )}
 
