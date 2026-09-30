@@ -126,7 +126,7 @@ export default function MonadPage() {
                 key={r.pairId}
                 className={`anim-fade-up rounded-xl border bg-card p-5 transition-[border-color,box-shadow,opacity] duration-300 ease-out ${
                   cleared
-                    ? "border-primary/40 shadow-[0_0_30px_rgba(171,159,242,0.07)]"
+                    ? "border-primary/40 "
                     : "border-border opacity-60"
                 }`}
                 style={{ animationDelay: `${i * 80}ms` }}

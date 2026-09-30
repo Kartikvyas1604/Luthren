@@ -17,7 +17,7 @@ export default function Home() {
           />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-0 top-0 h-[480px] anim-pulse-glow bg-[radial-gradient(ellipse_55%_45%_at_50%_-5%,var(--accent),transparent)]"
+            className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(ellipse_55%_40%_at_50%_-5%,var(--accent),transparent)] opacity-50"
           />
           <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 pb-20 pt-16 md:px-6 md:pb-28 md:pt-24 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
             <div className="anim-fade-up">
@@ -30,7 +30,7 @@ export default function Home() {
               </p>
               <h1 className="mt-5 max-w-2xl font-serif text-4xl font-medium leading-[1.08] tracking-tight md:text-6xl">
                 Two parties, one net margin,{" "}
-                <span className="brand-gradient italic">neither sees the other&rsquo;s book.</span>
+                <span className="text-primary italic">neither sees the other&rsquo;s book.</span>
               </h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
                 Obligor nets distinct desks&rsquo; DeFi positions against each other under MPC on
@@ -40,7 +40,7 @@ export default function Home() {
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <Link
                   href="/clear"
-                  className="sheen btn-press inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-medium text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                  className="btn-press inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary px-6 font-medium text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   Run the clearing demo
                   <ArrowRight className="h-4 w-4" aria-hidden />
@@ -96,7 +96,7 @@ export default function Home() {
                 },
               ].map(({ icon: Icon, title, body, tag }, i) => (
                 <RevealSection key={title} delay={i * 80}>
-                  <article className="group h-full rounded-xl border border-border bg-card p-6 transition-[transform,border-color,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/50 hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)] focus-within:border-primary/50">
+                  <article className="group h-full rounded-xl border border-border bg-card p-6 transition-[transform,border-color,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:border-primary/50  focus-within:border-primary/50">
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-secondary transition-colors duration-200 group-hover:border-primary/40">
                       <Icon className="h-5 w-5 text-primary" aria-hidden />
                     </div>

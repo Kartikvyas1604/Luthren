@@ -24,7 +24,7 @@ export function NettingPreview() {
   const maxBar = Math.max(siloed, 1);
 
   return (
-    <div className="rounded-xl border border-border bg-card/80 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)] backdrop-blur-sm md:p-6">
+    <div className="rounded-xl border border-border bg-card/80 p-5 backdrop-blur-sm md:p-6">
       <div className="flex items-center justify-between gap-4">
         <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
           Live netting calculator

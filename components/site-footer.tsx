@@ -11,7 +11,7 @@ export function SiteFooter() {
             className="flex items-center gap-2.5 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
           >
             <LogoMark size={22} className="translate-y-0.5" />
-            <span className="font-serif text-base font-medium tracking-tight brand-gradient">
+            <span className="font-serif text-base font-medium tracking-tight text-primary">
               Obligor
             </span>
           </Link>

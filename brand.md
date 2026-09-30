@@ -25,7 +25,7 @@ User-directed: Phantom wallet aesthetic. Neutral dark surfaces, single periwinkl
 | steel (TEE marker) | #5F7D9C | #8FA3BF |
 | destructive | #D6455C | #E05E6E |
 
-Rule: violet is the sole accent — CTAs, focus rings, trust chips, the brand-gradient wordmark and headline accent. Green = semantic success/savings only. Steel = attested-TEE markers. Red = destructive/leak. Aesthetic: wallet-native clean, no serif, flat surfaces with subtle elevation steps.
+Rule: violet is the sole accent, used with restraint — primary CTAs, focus rings, active-nav underline, small trust chips, and the italic headline accent (solid violet, no gradient). Everything else stays neutral monochrome. Green = semantic success/savings only. Steel = attested-TEE markers. Red = destructive/leak. No gradient text, no glow shadows, no sheen effects — the app should read like a serious wallet product, not a brand landing page. Wordmark is plain violet text.
 
 ## Typography (user-directed)
 
