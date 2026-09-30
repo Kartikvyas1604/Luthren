@@ -35,10 +35,13 @@ function CopyAddress({ address }: { address: string }) {
   );
 }
 
-function LegRow({ leg }: { leg: PositionLeg }) {
+function LegRow({ leg, index }: { leg: PositionLeg; index: number }) {
   const negative = leg.signedExposureUsd < 0;
   return (
-    <li className="flex items-center justify-between gap-3 border-b border-border/60 px-4 py-3 last:border-0">
+    <li
+      className="anim-fade-up flex items-center justify-between gap-3 border-b border-border/60 px-4 py-3 transition-colors duration-150 hover:bg-secondary/50 last:border-0"
+      style={{ animationDelay: `${index * 60}ms` }}
+    >
       <div className="min-w-0">
         <p className="truncate text-sm font-medium">
           {leg.instrument}
@@ -119,12 +122,12 @@ export function BookColumn({
         </div>
       ) : (
         <ul>
-          {legs.map((l) => (
-            <LegRow key={`${l.party}-${l.venue}-${l.instrument}`} leg={l} />
+          {legs.map((l, i) => (
+            <LegRow key={`${l.party}-${l.venue}-${l.instrument}`} leg={l} index={i} />
           ))}
         </ul>
       )}
-      <div className="flex items-baseline justify-between border-t border-border px-4 py-3">
+      <div className="flex items-baseline justify-between border-t border-border bg-secondary/30 px-4 py-3 transition-colors duration-150">
         <p className="text-xs text-muted-foreground">Siloed initial margin</p>
         <p className="font-mono text-sm font-medium tabular-nums">{usd(im, 0)}</p>
       </div>

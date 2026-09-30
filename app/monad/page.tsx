@@ -68,20 +68,28 @@ export default function MonadPage() {
         )}
 
         {epoch === "running" && (
-          <section aria-label="Epoch progress" aria-busy="true" className="rounded-lg border border-border bg-card p-6">
+          <section aria-label="Epoch progress" aria-busy="true" className="anim-fade-up rounded-xl border border-slate-400/30 bg-card p-6">
             <p className="flex items-center gap-2 text-sm font-medium">
               <LoaderCircle className="h-4 w-4 animate-spin text-primary motion-reduce:animate-none" aria-hidden />
               Clearing epoch in progress
+              <span className="ml-auto font-mono text-xs tabular-nums text-muted-foreground" aria-live="polite">
+                {concurrency}/{monadPairs.length} pairs
+              </span>
             </p>
+            <div className="mt-4 h-1 overflow-hidden rounded-full bg-secondary" aria-hidden>
+              <div className="anim-shimmer h-full w-full rounded-full bg-gradient-to-r from-transparent via-slate-300 to-transparent" />
+            </div>
             <ol className="mt-4 space-y-2">
               {EPOCH_STAGES.map((s, i) => (
                 <li
                   key={s}
-                  className={`flex items-center gap-2 font-mono text-xs ${
+                  className={`flex items-center gap-2 font-mono text-xs transition-colors duration-200 ${
                     i < stage ? "text-primary" : i === stage ? "text-foreground" : "text-muted-foreground"
                   }`}
                 >
-                  <span aria-hidden>{i < stage ? "✓" : i === stage ? "→" : "·"}</span>
+                  <span aria-hidden className="w-4">
+                    {i < stage ? "✓" : i === stage ? "→" : "·"}
+                  </span>
                   {s}
                 </li>
               ))}
@@ -102,16 +110,21 @@ export default function MonadPage() {
             return (
               <article
                 key={r.pairId}
-                className={`rounded-lg border bg-card p-5 transition-colors duration-200 ${
-                  cleared ? "border-primary/40" : "border-border opacity-60"
+                className={`anim-fade-up rounded-xl border bg-card p-5 transition-all duration-300 ${
+                  cleared
+                    ? "border-primary/40 shadow-[0_0_30px_rgba(92,147,245,0.07)]"
+                    : "border-border opacity-60"
                 }`}
+                style={{ animationDelay: `${i * 80}ms` }}
                 aria-live="polite"
               >
                 <header className="flex items-center justify-between gap-2">
                   <h2 className="text-sm font-medium">{r.label}</h2>
                   <span
-                    className={`rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase ${
-                      cleared ? "border-primary/40 text-primary" : "border-border text-muted-foreground"
+                    className={`rounded-full border px-2 py-0.5 font-mono text-[10px] uppercase transition-all duration-300 ${
+                      cleared
+                        ? "anim-flip border-primary/40 text-primary"
+                        : "border-border text-muted-foreground"
                     }`}
                   >
                     {cleared ? "cleared" : "queued"}
@@ -124,13 +137,21 @@ export default function MonadPage() {
                   </div>
                   <div className="flex items-baseline justify-between">
                     <dt className="text-xs text-muted-foreground">Netted</dt>
-                    <dd className="font-mono text-sm tabular-nums text-primary">
+                    <dd
+                      className={`font-mono text-sm tabular-nums transition-colors duration-300 ${
+                        cleared ? "text-primary" : "text-muted-foreground"
+                      }`}
+                    >
                       {cleared ? usd(r.net.nettedCombinedUsd, 0) : "——"}
                     </dd>
                   </div>
                   <div className="flex items-baseline justify-between">
                     <dt className="text-xs text-muted-foreground">Freed</dt>
-                    <dd className="font-mono text-sm font-medium tabular-nums text-success">
+                    <dd
+                      className={`font-mono text-sm font-medium tabular-nums transition-colors duration-300 ${
+                        cleared ? "text-success" : "text-muted-foreground"
+                      }`}
+                    >
                       {cleared ? usd(r.net.savingsUsd, 0) : "——"}
                     </dd>
                   </div>

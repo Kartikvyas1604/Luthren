@@ -111,21 +111,35 @@ export default function ClearPage() {
         )}
 
         {phase === "computing" && (
-          <section aria-label="Computing" aria-busy="true" className="rounded-lg border border-border bg-card p-6">
+          <section aria-label="Computing" aria-busy="true" className="anim-fade-up rounded-xl border border-primary/30 bg-card p-6">
             <p className="flex items-center gap-2 text-sm font-medium">
-              <LoaderCircle className="h-4 w-4 animate-spin text-primary motion-reduce:animate-none" aria-hidden />
-              Running confidential computation — SIMULATED locally
+              <Lock className="h-4 w-4 text-primary" aria-hidden />
+              Running confidential computation
+              <span className="rounded-full border border-destructive/40 px-2 py-0.5 font-mono text-[10px] uppercase text-destructive">
+                simulated
+              </span>
             </p>
+            <div className="mt-4 h-1 overflow-hidden rounded-full bg-secondary" aria-hidden>
+              <div className="anim-shimmer h-full w-full rounded-full bg-gradient-to-r from-transparent via-primary to-transparent" />
+            </div>
             <ol className="mt-4 space-y-2">
               {STAGES.map((s, i) => (
                 <li
                   key={s}
-                  className={`flex items-center gap-2 font-mono text-xs ${
+                  className={`flex items-center gap-2 font-mono text-xs transition-colors duration-200 ${
                     i < stage ? "text-primary" : i === stage ? "text-foreground" : "text-muted-foreground"
                   }`}
                 >
-                  <span aria-hidden>{i < stage ? "✓" : i === stage ? "→" : "·"}</span>
+                  <span aria-hidden className="w-4">
+                    {i < stage ? "✓" : i === stage ? "→" : "·"}
+                  </span>
                   {s}
+                  {i === stage && (
+                    <LoaderCircle
+                      className="h-3 w-3 animate-spin text-primary motion-reduce:animate-none"
+                      aria-hidden
+                    />
+                  )}
                   {i === stage && <span className="sr-only">in progress</span>}
                 </li>
               ))}

@@ -1,9 +1,28 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, RotateCcw } from "lucide-react";
 import Link from "next/link";
 import { usd, type NetMarginResult } from "@/lib/margin";
+import { useCountUp } from "@/hooks/use-count-up";
+
+function Bar({ target, tone, delay = 0 }: { target: number; tone: "primary" | "success" | "muted"; delay?: number }) {
+  const [w, setW] = useState(0);
+  useEffect(() => {
+    const t = setTimeout(() => setW(target), 30);
+    return () => clearTimeout(t);
+  }, [target]);
+  const cls =
+    tone === "primary" ? "bg-primary" : tone === "success" ? "bg-success" : "bg-muted-foreground/40";
+  return (
+    <div className="h-2.5 overflow-hidden rounded-full bg-secondary">
+      <div
+        className={`h-full rounded-full transition-[width] duration-700 ease-out ${cls}`}
+        style={{ width: `${w}%`, transitionDelay: `${delay}ms` }}
+      />
+    </div>
+  );
+}
 
 export function MarginHero({
   result,
@@ -18,19 +37,19 @@ export function MarginHero({
     () => (siloedCombined > 0 ? Math.round((result.savingsUsd / siloedCombined) * 100) : 0),
     [result.savingsUsd, siloedCombined],
   );
-  const [announced, setAnnounced] = useState(false);
 
-  const rows: Array<{ label: string; value: number; accent?: boolean }> = [
-    { label: "Siloed A", value: result.siloedAUsd },
-    { label: "Siloed B", value: result.siloedBUsd },
-    { label: "Siloed combined", value: result.siloedCombinedUsd },
-    { label: "Netted combined", value: result.nettedCombinedUsd },
-  ];
+  const nettedValue = useCountUp(result.nettedCombinedUsd, true);
+  const savingsValue = useCountUp(result.savingsUsd, true, 1100);
+
+  const nettedPct = siloedCombined > 0 ? (result.nettedCombinedUsd / siloedCombined) * 100 : 100;
+  const savingsPct = siloedCombined > 0 ? (result.savingsUsd / siloedCombined) * 100 : 0;
+
+  const [announced, setAnnounced] = useState(false);
 
   return (
     <section
       aria-label="Two-party margin result"
-      className="rounded-lg border border-primary/40 bg-card p-6 md:p-8"
+      className="anim-fade-up rounded-xl border border-primary/40 bg-card p-6 shadow-[0_0_40px_rgba(92,147,245,0.08)] md:p-8"
     >
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
@@ -43,52 +62,81 @@ export function MarginHero({
             }`}
             onAnimationEnd={() => setAnnounced(true)}
           >
-            {usd(result.nettedCombinedUsd, 0)}
+            {usd(nettedValue, 0)}
+          </p>
+          <p className="mt-1 font-mono text-xs text-muted-foreground tabular-nums">
+            net exposure {usd(Math.abs(result.netExposureUsd), 0)}
           </p>
         </div>
         <div className="text-right">
           <p className="text-xs text-muted-foreground">Capital freed</p>
           <p className="mt-1 font-mono text-2xl font-medium tabular-nums text-success">
-            {usd(result.savingsUsd, 0)}
+            {usd(savingsValue, 0)}
           </p>
-          <p className="font-mono text-xs tabular-nums text-success">
-            {pct}% vs siloed
-          </p>
+          <p className="font-mono text-xs tabular-nums text-success">{pct}% vs siloed</p>
         </div>
       </div>
 
-      <dl className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
-        {rows.map((r) => (
-          <div key={r.label} className="flex items-baseline justify-between border-t border-border pt-2 sm:block sm:border-0 sm:pt-0">
-            <dt className="text-xs text-muted-foreground">{r.label}</dt>
-            <dd
-              className={`font-mono text-sm tabular-nums ${
-                r.label === "Netted combined" ? "text-primary font-medium" : ""
-              }`}
-            >
-              {usd(r.value, 0)}
-            </dd>
+      <div className="mt-6 space-y-4">
+        <div>
+          <div className="flex items-baseline justify-between text-xs">
+            <span className="text-muted-foreground">Siloed combined</span>
+            <span className="font-mono tabular-nums text-muted-foreground">
+              {usd(result.siloedCombinedUsd, 0)}
+            </span>
           </div>
-        ))}
-      </dl>
+          <div className="mt-1.5">
+            <Bar target={100} tone="muted" />
+          </div>
+        </div>
+        <div>
+          <div className="flex items-baseline justify-between text-xs">
+            <span className="font-medium text-foreground">Netted combined</span>
+            <span className="font-mono tabular-nums text-foreground">
+              {usd(result.nettedCombinedUsd, 0)}
+            </span>
+          </div>
+          <div className="mt-1.5">
+            <Bar target={nettedPct} tone="primary" delay={200} />
+          </div>
+        </div>
+        <div>
+          <div className="flex items-baseline justify-between text-xs">
+            <span className="font-medium text-success">Savings</span>
+            <span className="font-mono tabular-nums text-success">{usd(result.savingsUsd, 0)}</span>
+          </div>
+          <div className="mt-1.5">
+            <Bar target={savingsPct} tone="success" delay={400} />
+          </div>
+        </div>
+      </div>
 
-      <details className="mt-6 rounded-md border border-border bg-background/50 px-4 py-3">
-        <summary className="cursor-pointer text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+      <details className="group mt-6 rounded-lg border border-border bg-background/50 px-4 py-3 transition-colors duration-150 open:border-primary/40">
+        <summary className="cursor-pointer text-sm font-medium transition-colors duration-150 group-open:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
           Bucket breakdown
+          <span className="ml-2 font-mono text-xs text-muted-foreground">
+            {result.buckets.length} risk buckets
+          </span>
         </summary>
-        <ul className="mt-3 space-y-2">
-          {result.buckets.map((b) => (
-            <li key={b.bucket} className="flex items-center justify-between gap-3 text-sm">
-              <span className="font-mono text-xs uppercase text-muted-foreground">{b.bucket}</span>
-              <span className="flex flex-1 items-center gap-2">
-                <span className="text-xs text-muted-foreground tabular-nums">
-                  exposure {usd(b.exposureUsd, 0)}
-                </span>
+        <ul className="mt-3 divide-y divide-border/60">
+          {result.buckets.map((b, i) => (
+            <li
+              key={b.bucket}
+              className="anim-fade-up flex items-center justify-between gap-3 py-2.5 text-sm"
+              style={{ animationDelay: `${i * 50}ms` }}
+            >
+              <span className="w-16 font-mono text-xs uppercase text-muted-foreground">{b.bucket}</span>
+              <span className="flex-1">
+                <Bar
+                  target={
+                    result.siloedCombinedUsd > 0
+                      ? (b.imUsd / result.siloedCombinedUsd) * 100
+                      : 0
+                  }
+                  tone="primary"
+                />
               </span>
-              <span className="font-mono text-xs text-muted-foreground tabular-nums">
-                h {(b.haircut * 100).toFixed(0)}%
-              </span>
-              <span className="font-mono text-sm tabular-nums">{usd(b.imUsd, 0)}</span>
+              <span className="w-24 text-right font-mono text-sm tabular-nums">{usd(b.imUsd, 0)}</span>
             </li>
           ))}
         </ul>
@@ -101,17 +149,17 @@ export function MarginHero({
         <button
           type="button"
           onClick={onReset}
-          className="inline-flex h-10 items-center gap-2 rounded-md border border-border px-4 text-sm transition-colors duration-100 hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="btn-press inline-flex h-10 items-center gap-2 rounded-md border border-border px-4 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           <RotateCcw className="h-4 w-4" aria-hidden />
           New session
         </button>
         <Link
           href="/adversarial"
-          className="inline-flex h-10 items-center gap-2 rounded-md px-4 text-sm text-muted-foreground transition-colors duration-100 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="group inline-flex h-10 items-center gap-2 rounded-md px-4 text-sm text-muted-foreground transition-colors duration-150 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >
           Show the dangerous counterfactual
-          <ArrowRight className="h-4 w-4" aria-hidden />
+          <ArrowRight className="h-4 w-4 transition-transform duration-150 group-hover:translate-x-0.5" aria-hidden />
         </Link>
       </div>
     </section>

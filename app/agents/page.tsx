@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { TerminalSquare } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 
 type Line = { text: string; cls?: string };
@@ -57,10 +56,14 @@ function AgentTerminal({
   return (
     <section className="overflow-hidden rounded-lg border border-border bg-[#0d0f13]">
       <header className="flex items-center justify-between border-b border-border px-4 py-3">
-        <h2 className="flex items-center gap-2 text-sm font-medium">
-          <TerminalSquare className="h-4 w-4 text-primary" aria-hidden />
-          {title}
-        </h2>
+        <div className="flex items-center gap-3">
+          <span className="flex gap-1.5" aria-hidden>
+            <span className="h-2.5 w-2.5 rounded-full bg-destructive/70" />
+            <span className="h-2.5 w-2.5 rounded-full bg-muted-foreground/40" />
+            <span className="h-2.5 w-2.5 rounded-full bg-success/70" />
+          </span>
+          <h2 className="text-sm font-medium">{title}</h2>
+        </div>
         <button
           type="button"
           onClick={run}
@@ -77,10 +80,23 @@ function AgentTerminal({
           </p>
         )}
         {lines.slice(0, visible).map((l, i) => (
-          <p key={i} className={l.cls}>
+          <p key={i} className={`anim-slide-in-right ${l.cls}`}>
             {l.text}
           </p>
         ))}
+        {running && visible < lines.length && (
+          <p className="text-muted-foreground">
+            <span className="text-primary" aria-hidden>
+              ▋
+            </span>
+            <span className="sr-only">running</span>
+          </p>
+        )}
+        {visible >= lines.length && running && (
+          <p className="text-primary" aria-hidden>
+            <span className="anim-blink">▋</span>
+          </p>
+        )}
       </div>
     </section>
   );
