@@ -6,34 +6,40 @@ _Status: active_
 
 Obligor is confidential two-party clearing for trading desks. Voice: precise, calm, honest. Short declarative sentences. Numbers do the persuading; no hype, no gradient hero copy. We name tradeoffs aloud ("TEE ≠ MPC"). Never overclaim.
 
-## Palette — "Bullion" (gold on ink)
+## Palette — "Phantom Violet" (wallet-native)
 
-Design-owner's choice. Institutional wealth aesthetic: deep neutral ink, warm off-white text, single champagne-gold accent, silver-steel reserved for the TEE distinction. Light mode = warm paper.
+User-directed: Phantom wallet aesthetic. Neutral dark surfaces, single periwinkle-violet accent, cool steel reserved for TEE markers. Light mode = neutral gray-white.
 
 | Token | Light value | Dark value |
 | --- | --- | --- |
-| background | #F6F4EF (warm paper) | #0A0B0D (ink) |
-| surface (card) | #FFFFFF | #131417 |
-| popover | #FFFFFF | #17181C |
-| foreground | #211D16 | #F2EFE8 (warm white) |
-| muted-foreground | #5D5648 | #A8A296 (warm gray) |
-| border | #E3DDD0 | #26262B |
-| **primary (gold)** | #8A6A1F (AA on white) | #E5B84B |
-| primary-foreground | #FDFCF8 | #0A0B0D |
-| ring | #8A6A1F | #E5B84B |
-| success | #7A6420 | #E5B84B |
-| steel (TEE marker) | #5C6F7A | #9FB6C4 |
-| destructive | #B54236 | #E05E52 |
+| background | #F5F5F7 | #131316 (Phantom dark) |
+| surface (card) | #FFFFFF | #1B1B1F |
+| popover | #FFFFFF | #202024 |
+| foreground | #1C1C1E | #F3F2F7 |
+| muted-foreground | #67636F | #9C9AA7 |
+| border | #E2E2E7 | #2A2A30 |
+| **primary (violet)** | #6C4FE0 (AA on white) | #AB9FF2 (Phantom periwinkle) |
+| primary-foreground | #FDFCFE | #131316 |
+| ring | #6C4FE0 | #AB9FF2 |
+| success | #0F8A5F | #5ED39A |
+| steel (TEE marker) | #5F7D9C | #8FA3BF |
+| destructive | #D6455C | #E05E6E |
 
-Rule: gold is the accent — CTAs (with hover sheen sweep), focus rings, savings numbers, the gold-text gradient wordmark and headline accent (italic serif). Steel = attested-TEE markers only. Red = destructive/leak. Never use a second warm accent.
+Rule: violet is the sole accent — CTAs, focus rings, trust chips, the brand-gradient wordmark and headline accent. Green = semantic success/savings only. Steel = attested-TEE markers. Red = destructive/leak. Aesthetic: wallet-native clean, no serif, flat surfaces with subtle elevation steps.
+
+## Typography (user-directed)
+
+- **Headings:** Geist (`font-serif` token remapped to Geist var — display sans, tight tracking).
+- **Body/UI:** Inter (first in the list; neutral, wallet-native).
+- **Numbers/pricing only:** Geist Mono with `tabular-nums` — balances, margins, addresses.
 
 ## Typography
 
-- Headlines: **Fraunces** (serif, next/font/google) — gives the "clearing house ledger" authority. Weights 500-600, tight tracking.
+Superseded by the user-directed typography section above: Geist headings, Inter body, Geist Mono numbers. Serif removed.
 - UI/body: **Geist Sans**.
 - Numbers/addresses/code: **Geist Mono** with `tabular-nums` always for currency; 2 decimals everywhere for USD.
 
-Rule: never let serif set UI copy — headlines and wordmark only.
+Rule: Geist (headings) and Inter (body) share the neutral sans family look — headings use tighter tracking and medium weight to differentiate. Numbers always Geist Mono.
 
 ## Gradients & texture
 

@@ -4,52 +4,52 @@
 
 :root {
   color-scheme: light;
-  --background: #f6f4ef;
-  --foreground: #211d16;
+  --background: #f5f5f7;
+  --foreground: #1c1c1e;
   --card: #ffffff;
-  --card-foreground: #211d16;
+  --card-foreground: #1c1c1e;
   --popover: #ffffff;
-  --popover-foreground: #211d16;
-  --primary: #8a6a1f;
-  --primary-foreground: #fdfcf8;
-  --secondary: #efeadf;
-  --secondary-foreground: #211d16;
-  --muted: #efeadf;
-  --muted-foreground: #5d5648;
-  --accent: #f3e7c9;
-  --accent-foreground: #8a6a1f;
-  --destructive: #b54236;
-  --destructive-foreground: #fdfcf8;
-  --success: #7a6420;
-  --border: #e3ddd0;
-  --input: #e3ddd0;
-  --ring: #8a6a1f;
-  --steel: #5c6f7a;
+  --popover-foreground: #1c1c1e;
+  --primary: #6c4fe0;
+  --primary-foreground: #fdfcfe;
+  --secondary: #edeef2;
+  --secondary-foreground: #1c1c1e;
+  --muted: #edeef2;
+  --muted-foreground: #67636f;
+  --accent: #ece9fb;
+  --accent-foreground: #6c4fe0;
+  --destructive: #d6455c;
+  --destructive-foreground: #fdfcfe;
+  --success: #0f8a5f;
+  --border: #e2e2e7;
+  --input: #e2e2e7;
+  --ring: #6c4fe0;
+  --steel: #5f7d9c;
 }
 
 .dark {
   color-scheme: dark;
-  --background: #0a0b0d;
-  --foreground: #f2efe8;
-  --card: #131417;
-  --card-foreground: #f2efe8;
-  --popover: #17181c;
-  --popover-foreground: #f2efe8;
-  --primary: #e5b84b;
-  --primary-foreground: #0a0b0d;
-  --secondary: #1d1e23;
-  --secondary-foreground: #f2efe8;
-  --muted: #1d1e23;
-  --muted-foreground: #a8a296;
-  --accent: #2a2110;
-  --accent-foreground: #e5b84b;
-  --destructive: #e05e52;
-  --destructive-foreground: #0a0b0d;
-  --success: #e5b84b;
-  --border: #26262b;
-  --input: #26262b;
-  --ring: #e5b84b;
-  --steel: #9fb6c4;
+  --background: #131316;
+  --foreground: #f3f2f7;
+  --card: #1b1b1f;
+  --card-foreground: #f3f2f7;
+  --popover: #202024;
+  --popover-foreground: #f3f2f7;
+  --primary: #ab9ff2;
+  --primary-foreground: #131316;
+  --secondary: #232328;
+  --secondary-foreground: #f3f2f7;
+  --muted: #232328;
+  --muted-foreground: #9c9aa7;
+  --accent: #2a2440;
+  --accent-foreground: #ab9ff2;
+  --destructive: #e05e6e;
+  --destructive-foreground: #131316;
+  --success: #5ed39a;
+  --border: #2a2a30;
+  --input: #2a2a30;
+  --ring: #ab9ff2;
+  --steel: #8fa3bf;
 }
 
 @theme inline {
@@ -74,9 +74,9 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-serif: var(--font-fraunces);
 }
 
 input[type="range"] {
@@ -86,7 +86,7 @@ input[type="range"] {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
 }
 
 .terminal {
@@ -103,7 +103,7 @@ body {
   color: #e05e52;
 }
 .terminal .t-ok {
-  color: #70e000;
+  color: #ab9ff2;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -219,8 +219,8 @@ body {
   mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
 }
 
-.gold-text {
-  background-image: linear-gradient(100deg, #b98a2e 0%, #e5b84b 30%, #f5d67b 50%, #e5b84b 70%, #b98a2e 100%);
+.brand-gradient {
+  background-image: linear-gradient(100deg, #4b3f9e 0%, #ab9ff2 30%, #d4ccff 50%, #ab9ff2 70%, #4b3f9e 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
